@@ -1,0 +1,446 @@
+{
+  "anioActual": "2026",
+  "anioProximo": "2027",
+  "docentes": [
+    {
+      "id": "d1",
+      "nombre": "Liliana Córdoba"
+    },
+    {
+      "id": "d2",
+      "nombre": "María Consuelo Granada"
+    },
+    {
+      "id": "d3",
+      "nombre": "Sandra Vélez Londoño"
+    },
+    {
+      "id": "d4",
+      "nombre": "Nancy Velazco Díaz"
+    },
+    {
+      "id": "d5",
+      "nombre": "Luz Marina Calle"
+    },
+    {
+      "id": "d6",
+      "nombre": "Yudy Zapata"
+    },
+    {
+      "id": "d7",
+      "nombre": "Diana Margarita Restrepo Ceballos"
+    },
+    {
+      "id": "d8",
+      "nombre": "Gladis Restrepo"
+    },
+    {
+      "id": "d9",
+      "nombre": "Natalia Vanegas"
+    },
+    {
+      "id": "d10",
+      "nombre": "Nancy Álvarez Londoño"
+    },
+    {
+      "id": "d11",
+      "nombre": "Erica Uribe"
+    },
+    {
+      "id": "d12",
+      "nombre": "Augusto Morales"
+    },
+    {
+      "id": "d13",
+      "nombre": "María José Sánchez"
+    },
+    {
+      "id": "d14",
+      "nombre": "Bibiana Herrera Martínez"
+    },
+    {
+      "id": "d15",
+      "nombre": "Leonora Murillo"
+    },
+    {
+      "id": "d16",
+      "nombre": "Inés Montoya"
+    },
+    {
+      "id": "d17",
+      "nombre": "Giovanni Alberto Monsalve Rojas"
+    },
+    {
+      "id": "d18",
+      "nombre": "Alexander Sánchez Bejarano"
+    },
+    {
+      "id": "d19",
+      "nombre": "Tatiana Rojas"
+    },
+    {
+      "id": "d20",
+      "nombre": "Beatriz Helena Duque Montoya"
+    },
+    {
+      "id": "d21",
+      "nombre": "María Isabel Ramírez"
+    },
+    {
+      "id": "d22",
+      "nombre": "Dora Elena Monsalve Echeverri"
+    },
+    {
+      "id": "d23",
+      "nombre": "Verónica Franco Passos"
+    },
+    {
+      "id": "d24",
+      "nombre": "María Alejandra Aguirre"
+    },
+    {
+      "id": "d25",
+      "nombre": "Nancy Dorrely Cano"
+    },
+    {
+      "id": "d9am148g20m",
+      "nombre": "Santiago Pulgarin Arrubla"
+    },
+    {
+      "id": "d28",
+      "nombre": "Jessica Salazar"
+    },
+    {
+      "id": "d29",
+      "nombre": "Wilson Bedoya"
+    },
+    {
+      "id": "d30",
+      "nombre": "Gabriel Horacio Martinez"
+    },
+    {
+      "id": "d31",
+      "nombre": "Berenice Ramirez"
+    }
+  ],
+  "esEjemplo": false,
+  "institucion": "Institución Educativa Marco Fidel Suárez",
+  "proyectos": [
+    {
+      "actual": [
+        "d1",
+        "d2",
+        "d4",
+        "d3"
+      ],
+      "id": "p1",
+      "nombre": "Protección del Medio Ambiente",
+      "proximo": [
+        "d1",
+        "d2",
+        "d4",
+        "d3"
+      ]
+    },
+    {
+      "actual": [
+        "d5",
+        "d6"
+      ],
+      "id": "p2",
+      "nombre": "Prevención y Atención de Desastres",
+      "proximo": [
+        "d11",
+        "d28",
+        "d5",
+        "d19"
+      ]
+    },
+    {
+      "actual": [
+        "d7"
+      ],
+      "id": "p3",
+      "nombre": "Prevención Integral de la Drogadicción",
+      "proximo": [
+        "d7",
+        "d25",
+        "d9am148g20m"
+      ]
+    },
+    {
+      "actual": [
+        "d8",
+        "d10",
+        "d9"
+      ],
+      "id": "p4",
+      "nombre": "Constitución Política e Instrucción Cívica",
+      "proximo": [
+        "d8",
+        "d10",
+        "d9"
+      ]
+    },
+    {
+      "actual": [
+        "d11",
+        "d8",
+        "d10",
+        "d9"
+      ],
+      "id": "p6",
+      "nombre": "Educación para la Justicia, la Paz y la Democracia",
+      "proximo": [
+        "d8",
+        "d10",
+        "d9",
+        "d9am148g20m"
+      ]
+    },
+    {
+      "actual": [
+        "d12",
+        "d7",
+        "d1",
+        "d10"
+      ],
+      "id": "p7",
+      "nombre": "Educación Sexual",
+      "proximo": [
+        "d12",
+        "d7",
+        "d22",
+        "d1",
+        "d10"
+      ]
+    },
+    {
+      "actual": [
+        "d14",
+        "d7",
+        "d13"
+      ],
+      "id": "p8",
+      "nombre": "Comunicación Institucional – Emisora, periódico y redes sociales",
+      "proximo": [
+        "d14",
+        "d7",
+        "d24",
+        "d13",
+        "d29"
+      ]
+    },
+    {
+      "actual": [
+        "d15"
+      ],
+      "id": "p9",
+      "nombre": "Servicio Social Estudiantil Obligatorio",
+      "proximo": [
+        "d30",
+        "d15",
+        "d1",
+        "d25"
+      ]
+    },
+    {
+      "actual": [
+        "d17",
+        "d16"
+      ],
+      "id": "p10",
+      "nombre": "Aprovechamiento del Tiempo Libre – (Deporte, Danza y Teatro)",
+      "proximo": [
+        "d31",
+        "d22",
+        "d17",
+        "d8",
+        "d16",
+        "d28"
+      ]
+    },
+    {
+      "actual": [
+        "d18"
+      ],
+      "id": "p11",
+      "nombre": "Banda de Paz",
+      "proximo": [
+        "d18"
+      ]
+    },
+    {
+      "actual": [
+        "d12",
+        "d14",
+        "d2",
+        "d3",
+        "d19"
+      ],
+      "id": "p12",
+      "nombre": "Semillero de Matemáticas",
+      "proximo": [
+        "d12",
+        "d28",
+        "d2",
+        "d3",
+        "d19"
+      ]
+    },
+    {
+      "actual": [
+        "d15",
+        "d4"
+      ],
+      "id": "p13",
+      "nombre": "Cátedra de Afrocolombianidad",
+      "proximo": [
+        "d31",
+        "d28",
+        "d15",
+        "d4"
+      ]
+    },
+    {
+      "actual": [
+        "d20",
+        "d21",
+        "d6"
+      ],
+      "id": "p14",
+      "nombre": "Educación en Tránsito y Seguridad Vial",
+      "proximo": [
+        "d20",
+        "d21",
+        "d6"
+      ]
+    },
+    {
+      "actual": [
+        "d7",
+        "d22",
+        "d23"
+      ],
+      "id": "p15",
+      "nombre": "Escuela de Padres",
+      "proximo": [
+        "d7",
+        "d22",
+        "d23"
+      ]
+    },
+    {
+      "actual": [
+        "d9"
+      ],
+      "id": "p16",
+      "nombre": "Restaurante Escolar",
+      "proximo": [
+        "d15",
+        "d9"
+      ]
+    },
+    {
+      "actual": [
+        "d22",
+        "d24",
+        "d25"
+      ],
+      "id": "p17",
+      "nombre": "Proyecto Institucional de Lectura y Escritura – PILE",
+      "proximo": [
+        "d25",
+        "d16"
+      ]
+    },
+    {
+      "actual": [
+        "d18",
+        "d15",
+        "d24"
+      ],
+      "id": "p18",
+      "nombre": "Bilingüismo",
+      "proximo": [
+        "d18",
+        "d15",
+        "d24"
+      ]
+    },
+    {
+      "actual": [],
+      "id": "p19",
+      "nombre": "Tu mascota, bienestar de Amor",
+      "proximo": [
+        "d20",
+        "d14",
+        "d1",
+        "d29"
+      ]
+    },
+    {
+      "actual": [],
+      "id": "p21",
+      "nombre": "Proyecto de Vida",
+      "proximo": [
+        "d7",
+        "d13",
+        "d24",
+        "d21",
+        "d23",
+        "d6"
+      ]
+    },
+    {
+      "actual": [],
+      "id": "p22",
+      "nombre": "Orientación Vocacional e Inducción a la Vida Universitaria",
+      "proximo": [
+        "d7",
+        "d11",
+        "d9am148g20m"
+      ]
+    },
+    {
+      "actual": [],
+      "id": "p23",
+      "nombre": "Pintura",
+      "proximo": [
+        "d29"
+      ]
+    },
+    {
+      "actual": [],
+      "id": "p24",
+      "nombre": "Robótica",
+      "proximo": [
+        "d11",
+        "d9am148g20m"
+      ]
+    },
+    {
+      "actual": [
+        "d9"
+      ],
+      "id": "pbwonv31v8o",
+      "nombre": "A lo Natural",
+      "proximo": [
+        "d9",
+        "d4"
+      ]
+    },
+    {
+      "actual": [],
+      "id": "p5",
+      "nombre": "Proyecto Democracia",
+      "proximo": []
+    },
+    {
+      "actual": [],
+      "id": "p20",
+      "nombre": "Proyecto de Directores de grupo",
+      "proximo": []
+    }
+  ]
+}

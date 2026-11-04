@@ -1,0 +1,201 @@
+{
+  "anio": "2026",
+  "items": [
+    {
+      "docente": "Luz Marina Calle Restrepo",
+      "grupo": "0A",
+      "id": "g1",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Yudy Mabel Zapata Tabares",
+      "grupo": "0B",
+      "id": "g2",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "María Isabel Ramírez Zapata",
+      "grupo": "1A",
+      "id": "g3",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Dora Elena de la Mercedes Monsalve Echeverri",
+      "grupo": "1B",
+      "id": "g4",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Beatriz Duque",
+      "grupo": "2A",
+      "id": "g5",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Verónica Franco Passos",
+      "grupo": "2B",
+      "id": "g6",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Inés Montoya",
+      "grupo": "3A",
+      "id": "g7",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "María Consuelo Granada",
+      "grupo": "3B",
+      "id": "g8",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Sandra Milena Vélez Londoño",
+      "grupo": "4A",
+      "id": "g9",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Leonora Murillo",
+      "grupo": "4B",
+      "id": "g10",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Bibiana Herrera Martínez",
+      "grupo": "5A",
+      "id": "g11",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Nancy Álvarez Londoño",
+      "grupo": "5B",
+      "id": "g12",
+      "jornada": "Tarde",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "6A",
+      "id": "g13",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Nancy Dorelly Cano",
+      "grupo": "6B",
+      "id": "g14",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Tatiana Margarita Rojas Agamez",
+      "grupo": "7A",
+      "id": "g15",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Gladys Restrepo",
+      "grupo": "7B",
+      "id": "g16",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Liliana Córdoba Moreno",
+      "grupo": "8A",
+      "id": "g17",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    },
+    {
+      "docente": "María Berenice Ramírez",
+      "grupo": "8B",
+      "id": "g18",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    },
+    {
+      "docente": "María José Sánchez",
+      "grupo": "9A",
+      "id": "g19",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "9B",
+      "id": "g20",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    },
+    {
+      "docente": "María Alejandra Aguirre",
+      "grupo": "10A",
+      "id": "g21",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Wilson Bedoya Franco",
+      "grupo": "10B",
+      "id": "g22",
+      "jornada": "",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Alexander Sánchez",
+      "grupo": "11A",
+      "id": "g23",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    },
+    {
+      "docente": "Augusto de Jesús Morales Jaramillo",
+      "grupo": "",
+      "id": "g24",
+      "jornada": "",
+      "sede": ""
+    },
+    {
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "",
+      "id": "g25",
+      "jornada": "",
+      "sede": ""
+    },
+    {
+      "docente": "Nancy Velazco",
+      "grupo": "",
+      "id": "g26",
+      "jornada": "",
+      "sede": ""
+    },
+    {
+      "docente": "Jessica Alejandra Salazar",
+      "grupo": "",
+      "id": "g27",
+      "jornada": "",
+      "sede": ""
+    },
+    {
+      "docente": "Santiago Pulgarin Arrubla",
+      "grupo": "",
+      "id": "gphkwmfjaml",
+      "jornada": "Mañana",
+      "sede": "Principal"
+    }
+  ]
+}

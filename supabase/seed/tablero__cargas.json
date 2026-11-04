@@ -1,0 +1,1013 @@
+{
+  "items": [
+    {
+      "asignatura": "Habilidades comunicativas",
+      "docente": "María José Sánchez",
+      "grupo": "11",
+      "horas": 1,
+      "id": "c1"
+    },
+    {
+      "asignatura": "Habilidades comunicativas",
+      "docente": "María José Sánchez",
+      "grupo": "9A",
+      "horas": 1,
+      "id": "c2"
+    },
+    {
+      "asignatura": "Habilidades comunicativas",
+      "docente": "María José Sánchez",
+      "grupo": "9B",
+      "horas": 1,
+      "id": "c3"
+    },
+    {
+      "asignatura": "Habilidades comunicativas",
+      "docente": "María José Sánchez",
+      "grupo": "10A",
+      "horas": 1,
+      "id": "c4"
+    },
+    {
+      "asignatura": "Habilidades comunicativas",
+      "docente": "María José Sánchez",
+      "grupo": "10B",
+      "horas": 1,
+      "id": "c5"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "María José Sánchez",
+      "grupo": "11",
+      "horas": 3,
+      "id": "c6"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "María José Sánchez",
+      "grupo": "7A",
+      "horas": 4,
+      "id": "c7"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "María José Sánchez",
+      "grupo": "7B",
+      "horas": 4,
+      "id": "c8"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "María José Sánchez",
+      "grupo": "10A",
+      "horas": 3,
+      "id": "c9"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "María José Sánchez",
+      "grupo": "10B",
+      "horas": 3,
+      "id": "c10"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "Nancy Dorelly Cano",
+      "grupo": "6A",
+      "horas": 4,
+      "id": "c11"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "Nancy Dorelly Cano",
+      "grupo": "6B",
+      "horas": 4,
+      "id": "c12"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "Nancy Dorelly Cano",
+      "grupo": "8A",
+      "horas": 4,
+      "id": "c13"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "Nancy Dorelly Cano",
+      "grupo": "8B",
+      "horas": 4,
+      "id": "c14"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "Nancy Dorelly Cano",
+      "grupo": "9A",
+      "horas": 3,
+      "id": "c15"
+    },
+    {
+      "asignatura": "Español",
+      "docente": "Nancy Dorelly Cano",
+      "grupo": "9B",
+      "horas": 3,
+      "id": "c16"
+    },
+    {
+      "asignatura": "Ciencias Naturales Biología",
+      "docente": "Nancy Emérita Velazco Díaz",
+      "grupo": "8B",
+      "horas": 4,
+      "id": "c17"
+    },
+    {
+      "asignatura": "Ciencias Naturales Biología",
+      "docente": "Nancy Emérita Velazco Díaz",
+      "grupo": "9A",
+      "horas": 4,
+      "id": "c18"
+    },
+    {
+      "asignatura": "Ciencias Naturales Biología",
+      "docente": "Nancy Emérita Velazco Díaz",
+      "grupo": "9B",
+      "horas": 4,
+      "id": "c19"
+    },
+    {
+      "asignatura": "Ciencias Naturales Química",
+      "docente": "Nancy Emérita Velazco Díaz",
+      "grupo": "11",
+      "horas": 3,
+      "id": "c20"
+    },
+    {
+      "asignatura": "Ciencias Naturales Química",
+      "docente": "Nancy Emérita Velazco Díaz",
+      "grupo": "10A",
+      "horas": 3,
+      "id": "c21"
+    },
+    {
+      "asignatura": "Ciencias Naturales Química",
+      "docente": "Nancy Emérita Velazco Díaz",
+      "grupo": "10B",
+      "horas": 3,
+      "id": "c22"
+    },
+    {
+      "asignatura": "Emprendimiento",
+      "docente": "Nancy Emérita Velazco Díaz",
+      "grupo": "9A",
+      "horas": 1,
+      "id": "c23"
+    },
+    {
+      "asignatura": "Ciencias Naturales",
+      "docente": "Liliana Córdoba Moreno",
+      "grupo": "6A",
+      "horas": 4,
+      "id": "c24"
+    },
+    {
+      "asignatura": "Ciencias Naturales",
+      "docente": "Liliana Córdoba Moreno",
+      "grupo": "6B",
+      "horas": 4,
+      "id": "c25"
+    },
+    {
+      "asignatura": "Ciencias Naturales",
+      "docente": "Liliana Córdoba Moreno",
+      "grupo": "7A",
+      "horas": 4,
+      "id": "c26"
+    },
+    {
+      "asignatura": "Ciencias Naturales",
+      "docente": "Liliana Córdoba Moreno",
+      "grupo": "7B",
+      "horas": 4,
+      "id": "c27"
+    },
+    {
+      "asignatura": "Ciencias Naturales",
+      "docente": "Liliana Córdoba Moreno",
+      "grupo": "8A",
+      "horas": 4,
+      "id": "c28"
+    },
+    {
+      "asignatura": "Emprendimiento",
+      "docente": "Liliana Córdoba Moreno",
+      "grupo": "8A",
+      "horas": 1,
+      "id": "c29"
+    },
+    {
+      "asignatura": "Emprendimiento",
+      "docente": "Liliana Córdoba Moreno",
+      "grupo": "8B",
+      "horas": 1,
+      "id": "c30"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Augusto de Jesús Morales Jaramillo",
+      "grupo": "6A",
+      "horas": 5,
+      "id": "c31"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Augusto de Jesús Morales Jaramillo",
+      "grupo": "6B",
+      "horas": 5,
+      "id": "c32"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Augusto de Jesús Morales Jaramillo",
+      "grupo": "9A",
+      "horas": 5,
+      "id": "c33"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Augusto de Jesús Morales Jaramillo",
+      "grupo": "9B",
+      "horas": 5,
+      "id": "c34"
+    },
+    {
+      "asignatura": "Emprendimiento",
+      "docente": "Augusto de Jesús Morales Jaramillo",
+      "grupo": "6A",
+      "horas": 1,
+      "id": "c35"
+    },
+    {
+      "asignatura": "Emprendimiento",
+      "docente": "Augusto de Jesús Morales Jaramillo",
+      "grupo": "6B",
+      "horas": 1,
+      "id": "c36"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Tatiana Margarita Rojas Agamez",
+      "grupo": "7A",
+      "horas": 5,
+      "id": "c37"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Tatiana Margarita Rojas Agamez",
+      "grupo": "7B",
+      "horas": 5,
+      "id": "c38"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Tatiana Margarita Rojas Agamez",
+      "grupo": "8A",
+      "horas": 5,
+      "id": "c39"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Tatiana Margarita Rojas Agamez",
+      "grupo": "8B",
+      "horas": 5,
+      "id": "c40"
+    },
+    {
+      "asignatura": "Emprendimiento",
+      "docente": "Tatiana Margarita Rojas Agamez",
+      "grupo": "7A",
+      "horas": 1,
+      "id": "c41"
+    },
+    {
+      "asignatura": "Emprendimiento",
+      "docente": "Tatiana Margarita Rojas Agamez",
+      "grupo": "7B",
+      "horas": 1,
+      "id": "c42"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Gladys Restrepo",
+      "grupo": "6A",
+      "horas": 4,
+      "id": "c43"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Gladys Restrepo",
+      "grupo": "6B",
+      "horas": 4,
+      "id": "c44"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Gladys Restrepo",
+      "grupo": "7A",
+      "horas": 4,
+      "id": "c45"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Gladys Restrepo",
+      "grupo": "7B",
+      "horas": 4,
+      "id": "c46"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Gladys Restrepo",
+      "grupo": "8A",
+      "horas": 4,
+      "id": "c47"
+    },
+    {
+      "asignatura": "Ciencias políticas y económicas",
+      "docente": "Gladys Restrepo",
+      "grupo": "10A",
+      "horas": 1,
+      "id": "c48"
+    },
+    {
+      "asignatura": "Ciencias políticas y económicas",
+      "docente": "Gladys Restrepo",
+      "grupo": "10B",
+      "horas": 1,
+      "id": "c49"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "11",
+      "horas": 1,
+      "id": "c50"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "8B",
+      "horas": 4,
+      "id": "c51"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "9A",
+      "horas": 4,
+      "id": "c52"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "9B",
+      "horas": 4,
+      "id": "c53"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "10A",
+      "horas": 1,
+      "id": "c54"
+    },
+    {
+      "asignatura": "Sociales",
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "10B",
+      "horas": 1,
+      "id": "c55"
+    },
+    {
+      "asignatura": "Filosofía",
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "11",
+      "horas": 2,
+      "id": "c56"
+    },
+    {
+      "asignatura": "Filosofía",
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "10A",
+      "horas": 2,
+      "id": "c57"
+    },
+    {
+      "asignatura": "Filosofía",
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "10B",
+      "horas": 2,
+      "id": "c58"
+    },
+    {
+      "asignatura": "Ciencias políticas y económicas",
+      "docente": "Natalia Vanegas Marín",
+      "grupo": "11",
+      "horas": 1,
+      "id": "c59"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "11",
+      "horas": 2,
+      "id": "c60"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "6A",
+      "horas": 2,
+      "id": "c61"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "6B",
+      "horas": 2,
+      "id": "c62"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "7A",
+      "horas": 2,
+      "id": "c63"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "7B",
+      "horas": 2,
+      "id": "c64"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "8A",
+      "horas": 2,
+      "id": "c65"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "8B",
+      "horas": 2,
+      "id": "c66"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "9A",
+      "horas": 2,
+      "id": "c67"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "9B",
+      "horas": 2,
+      "id": "c68"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "10A",
+      "horas": 2,
+      "id": "c69"
+    },
+    {
+      "asignatura": "Artística",
+      "docente": "Wilson Ferney Bedoya Franco",
+      "grupo": "10B",
+      "horas": 2,
+      "id": "c70"
+    },
+    {
+      "asignatura": "Organización, procesos y requisitos",
+      "docente": "Santiago Pulgarín",
+      "grupo": "10A",
+      "horas": 2,
+      "id": "c71"
+    },
+    {
+      "asignatura": "Organización, procesos y requisitos",
+      "docente": "Santiago Pulgarín",
+      "grupo": "10B",
+      "horas": 2,
+      "id": "c72"
+    },
+    {
+      "asignatura": "Lógica de programación",
+      "docente": "Santiago Pulgarín",
+      "grupo": "10A",
+      "horas": 3,
+      "id": "c73"
+    },
+    {
+      "asignatura": "Lógica de programación",
+      "docente": "Santiago Pulgarín",
+      "grupo": "10B",
+      "horas": 3,
+      "id": "c74"
+    },
+    {
+      "asignatura": "Arquitectura de hardware y software",
+      "docente": "Santiago Pulgarín",
+      "grupo": "10A",
+      "horas": 2,
+      "id": "c75"
+    },
+    {
+      "asignatura": "Arquitectura de hardware y software",
+      "docente": "Santiago Pulgarín",
+      "grupo": "10B",
+      "horas": 2,
+      "id": "c76"
+    },
+    {
+      "asignatura": "Herramienta de diseño gráfico",
+      "docente": "Santiago Pulgarín",
+      "grupo": "11",
+      "horas": 3,
+      "id": "c77"
+    },
+    {
+      "asignatura": "Construcción de software procesos",
+      "docente": "Santiago Pulgarín",
+      "grupo": "11",
+      "horas": 2,
+      "id": "c78"
+    },
+    {
+      "asignatura": "Base de datos 1",
+      "docente": "Santiago Pulgarín",
+      "grupo": "11",
+      "horas": 2,
+      "id": "c79"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "11",
+      "horas": 2,
+      "id": "c80"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "6A",
+      "horas": 2,
+      "id": "c81"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "6B",
+      "horas": 2,
+      "id": "c82"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "7A",
+      "horas": 2,
+      "id": "c83"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "7B",
+      "horas": 2,
+      "id": "c84"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "8A",
+      "horas": 2,
+      "id": "c85"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "8B",
+      "horas": 2,
+      "id": "c86"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "9A",
+      "horas": 2,
+      "id": "c87"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "9B",
+      "horas": 2,
+      "id": "c88"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "10A",
+      "horas": 2,
+      "id": "c89"
+    },
+    {
+      "asignatura": "Tecnología",
+      "docente": "Erica Yorlay Uribe Galeano",
+      "grupo": "10B",
+      "horas": 2,
+      "id": "c90"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "María Alejandra Aguirre",
+      "grupo": "6A",
+      "horas": 4,
+      "id": "c91"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "María Alejandra Aguirre",
+      "grupo": "6B",
+      "horas": 4,
+      "id": "c92"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "María Alejandra Aguirre",
+      "grupo": "7A",
+      "horas": 4,
+      "id": "c93"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "María Alejandra Aguirre",
+      "grupo": "7B",
+      "horas": 4,
+      "id": "c94"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "María Alejandra Aguirre",
+      "grupo": "8A",
+      "horas": 4,
+      "id": "c95"
+    },
+    {
+      "asignatura": "Lecto-Escritura Crítica (enfocada en Inglés)",
+      "docente": "María Alejandra Aguirre",
+      "grupo": "10A",
+      "horas": 1,
+      "id": "c96"
+    },
+    {
+      "asignatura": "Lecto-Escritura Crítica (enfocada en Inglés)",
+      "docente": "María Alejandra Aguirre",
+      "grupo": "10B",
+      "horas": 1,
+      "id": "c97"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "Alexander Sánchez",
+      "grupo": "11",
+      "horas": 3,
+      "id": "c98"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "Alexander Sánchez",
+      "grupo": "8B",
+      "horas": 4,
+      "id": "c99"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "Alexander Sánchez",
+      "grupo": "9A",
+      "horas": 4,
+      "id": "c100"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "Alexander Sánchez",
+      "grupo": "9B",
+      "horas": 4,
+      "id": "c101"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "Alexander Sánchez",
+      "grupo": "10A",
+      "horas": 3,
+      "id": "c102"
+    },
+    {
+      "asignatura": "Inglés",
+      "docente": "Alexander Sánchez",
+      "grupo": "10B",
+      "horas": 3,
+      "id": "c103"
+    },
+    {
+      "asignatura": "Lecto-Escritura Crítica (enfocada en Inglés)",
+      "docente": "Alexander Sánchez",
+      "grupo": "11",
+      "horas": 1,
+      "id": "c104"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "11",
+      "horas": 2,
+      "id": "c105"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "6A",
+      "horas": 2,
+      "id": "c106"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "6B",
+      "horas": 2,
+      "id": "c107"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "7A",
+      "horas": 2,
+      "id": "c108"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "7B",
+      "horas": 2,
+      "id": "c109"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "8A",
+      "horas": 2,
+      "id": "c110"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "8B",
+      "horas": 2,
+      "id": "c111"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "9A",
+      "horas": 2,
+      "id": "c112"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "9B",
+      "horas": 2,
+      "id": "c113"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "10A",
+      "horas": 2,
+      "id": "c114"
+    },
+    {
+      "asignatura": "Educación física",
+      "docente": "Giovani Alberto Monsalve",
+      "grupo": "10B",
+      "horas": 2,
+      "id": "c115"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "11",
+      "horas": 1,
+      "id": "c116"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "6A",
+      "horas": 1,
+      "id": "c117"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "6B",
+      "horas": 1,
+      "id": "c118"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "7A",
+      "horas": 1,
+      "id": "c119"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "7B",
+      "horas": 1,
+      "id": "c120"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "8A",
+      "horas": 1,
+      "id": "c121"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "8B",
+      "horas": 1,
+      "id": "c122"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "9A",
+      "horas": 1,
+      "id": "c123"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "9B",
+      "horas": 1,
+      "id": "c124"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "10A",
+      "horas": 1,
+      "id": "c125"
+    },
+    {
+      "asignatura": "Educación Religiosa",
+      "docente": "María Berenice Ramírez",
+      "grupo": "10B",
+      "horas": 1,
+      "id": "c126"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "11",
+      "horas": 1,
+      "id": "c127"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "6A",
+      "horas": 1,
+      "id": "c128"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "6B",
+      "horas": 1,
+      "id": "c129"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "7A",
+      "horas": 1,
+      "id": "c130"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "7B",
+      "horas": 1,
+      "id": "c131"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "8A",
+      "horas": 1,
+      "id": "c132"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "8B",
+      "horas": 1,
+      "id": "c133"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "9A",
+      "horas": 1,
+      "id": "c134"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "9B",
+      "horas": 1,
+      "id": "c135"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "10A",
+      "horas": 1,
+      "id": "c136"
+    },
+    {
+      "asignatura": "Ética y Valores",
+      "docente": "María Berenice Ramírez",
+      "grupo": "10B",
+      "horas": 1,
+      "id": "c137"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Jessica Alejandra Salazar",
+      "grupo": "11",
+      "horas": 4,
+      "id": "c138"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Jessica Alejandra Salazar",
+      "grupo": "10A",
+      "horas": 4,
+      "id": "c139"
+    },
+    {
+      "asignatura": "Matemáticas",
+      "docente": "Jessica Alejandra Salazar",
+      "grupo": "10B",
+      "horas": 4,
+      "id": "c140"
+    },
+    {
+      "asignatura": "Ciencias Naturales Física",
+      "docente": "Jessica Alejandra Salazar",
+      "grupo": "11",
+      "horas": 3,
+      "id": "c141"
+    },
+    {
+      "asignatura": "Ciencias Naturales Física",
+      "docente": "Jessica Alejandra Salazar",
+      "grupo": "10A",
+      "horas": 3,
+      "id": "c142"
+    },
+    {
+      "asignatura": "Ciencias Naturales Física",
+      "docente": "Jessica Alejandra Salazar",
+      "grupo": "10B",
+      "horas": 3,
+      "id": "c143"
+    },
+    {
+      "asignatura": "Emprendimiento",
+      "docente": "Jessica Alejandra Salazar",
+      "grupo": "9B",
+      "horas": 1,
+      "id": "c144"
+    }
+  ],
+  "tope": 22
+}

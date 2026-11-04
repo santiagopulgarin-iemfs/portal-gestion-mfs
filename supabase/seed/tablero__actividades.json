@@ -1,0 +1,136 @@
+{
+  "items": [
+    {
+      "actividad": "Día del Orientador",
+      "fecha": "2027-02-26",
+      "id": "a1",
+      "responsables": "Cuerpo de docentes"
+    },
+    {
+      "actividad": "Día Internacional de los Derechos de la Mujer",
+      "fecha": "2027-03-08",
+      "id": "a2",
+      "responsables": "Docentes de primaria y bachillerato; Alexander (10.º-11.º); personero(a)"
+    },
+    {
+      "actividad": "Cumpleaños de Andes",
+      "fecha": "2027-03-12",
+      "id": "a3",
+      "responsables": "Grados 1.º y 2.º; 9.º A-B"
+    },
+    {
+      "actividad": "Día del Idioma (español)",
+      "fecha": "2027-04-23",
+      "id": "a4",
+      "responsables": "María José; Nancy Cano; Mesa de Español"
+    },
+    {
+      "actividad": "Día Internacional del Trabajo",
+      "fecha": "2027-04-30",
+      "id": "a5",
+      "responsables": "Wilson; Yudy; Marina"
+    },
+    {
+      "actividad": "Bazar y bingo infantil – recaudo de fondos para actividades de fin de año",
+      "fecha": "2027-05-03",
+      "id": "a6",
+      "responsables": "Docentes de primaria"
+    },
+    {
+      "actividad": "Día Internacional de la Cruz Roja",
+      "fecha": "2027-05-07",
+      "id": "a7",
+      "responsables": "Comité de Cruz Roja; Tatiana"
+    },
+    {
+      "actividad": "Celebración del Día de la Madre",
+      "fecha": "2027-05-14",
+      "id": "a8",
+      "responsables": "Por definir; Asociación de Padres de Familia"
+    },
+    {
+      "actividad": "Día del Educador",
+      "fecha": "2027-05-14",
+      "id": "a9",
+      "responsables": "Consejo Estudiantil; personero(a); contralor(a); Natalia; Gladys; Nancy Álvarez"
+    },
+    {
+      "actividad": "Día de la Afrocolombianidad",
+      "fecha": "2027-05-21",
+      "id": "a10",
+      "responsables": "Leonora; Nancy Velazco"
+    },
+    {
+      "actividad": "Día del Reciclaje",
+      "fecha": "2027-05-28",
+      "id": "a11",
+      "responsables": "Proyecto de Medio Ambiente y sedes; Liliana; Eucary; Sandra Vélez"
+    },
+    {
+      "actividad": "Día de la Madre – celebración familiar",
+      "fecha": "2027-05-30",
+      "id": "a12",
+      "responsables": "Asociación de Padres de Familia / comunidad educativa"
+    },
+    {
+      "actividad": "Día de los Héroes Caídos en Acción – Grito de Independencia",
+      "fecha": "2027-07-20",
+      "id": "a13",
+      "responsables": "Leonora; Banda y escuadrones"
+    },
+    {
+      "actividad": "Batalla de Boyacá",
+      "fecha": "2027-08-06",
+      "id": "a14",
+      "responsables": "Directores de los grados 5.º; Diana Margarita; Giovani"
+    },
+    {
+      "actividad": "Bazar y bingo infantil – recaudo de fondos para actividades de fin de año",
+      "fecha": "2027-08-09",
+      "id": "a15",
+      "responsables": "Docentes de primaria"
+    },
+    {
+      "actividad": "Día de la Antioqueñidad",
+      "fecha": "2027-08-11",
+      "id": "a16",
+      "responsables": "Cuerpo de docentes; Asociación de Padres de Familia; comunidad educativa"
+    },
+    {
+      "actividad": "Día del Amor y la Amistad",
+      "fecha": "2027-09-15",
+      "id": "a17",
+      "responsables": "Consejo Estudiantil; equipo de Sociales; personero(a); contralor(a)"
+    },
+    {
+      "actividad": "Día de las Razas y las Etnias",
+      "fecha": "2027-10-12",
+      "id": "a18",
+      "responsables": "Giovanny; Eucary; Liliana; Alexander"
+    },
+    {
+      "actividad": "Día de la Familia",
+      "fecha": "2027-10-22",
+      "id": "a19",
+      "responsables": "Cuerpo de docentes de la I.E. Marco Fidel Suárez"
+    },
+    {
+      "actividad": "Día de los Niños y las Niñas",
+      "fecha": "2027-10-29",
+      "id": "a20",
+      "responsables": "Docentes de primaria"
+    },
+    {
+      "actividad": "Feria de la Ciencia, el Emprendimiento y la Tecnología",
+      "fecha": "2027-11-17",
+      "id": "a21",
+      "responsables": "Docentes de Ciencias Naturales, Emprendimiento y Tecnología"
+    },
+    {
+      "actividad": "Día Internacional de la Eliminación de las Violencias contra las Mujeres y los Hombres",
+      "fecha": "2027-11-25",
+      "id": "a22",
+      "responsables": "Inés Edilma; Diana Margarita"
+    }
+  ]
+}

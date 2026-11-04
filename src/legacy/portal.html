@@ -1,0 +1,196 @@
+  <header class="top">
+    <div class="brand">
+      <img class="logo" src="/escudo.jpg" alt="Escudo de la I.E. Marco Fidel Suárez" width="96" height="96">
+      <div>
+      <div class="eyebrow">Andes · Antioquia · Coordinación y Rectoría Académica</div>
+      <h1 id="titulo">Portal de Gestión I.E. Marco Fidel Suárez</h1>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="status" id="estado" data-s="wait" role="status">Conectando…</span>
+      <button class="btn" id="btn-tema" data-act="tema">Modo claro</button>
+      <button class="btn" id="btn-copiar" data-act="copy">Copiar tablas</button>
+      <button class="btn primary" id="btn-word" data-act="word">Descargar Word</button>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Vistas">
+    <button class="tab" role="tab" id="tab-proy" data-act="tab" data-tab="proy" aria-selected="true" aria-controls="view-proy">Proyectos <span class="n" id="tab-proy-n"></span></button>
+    <button class="tab" role="tab" id="tab-act" data-act="tab" data-tab="act" aria-selected="false" aria-controls="view-act">Actividades <span class="n" id="tab-act-n"></span></button>
+    <button class="tab" role="tab" id="tab-dg" data-act="tab" data-tab="dg" aria-selected="false" aria-controls="view-dg">Direcciones de grupo <span class="n" id="tab-dg-n"></span></button>
+    <button class="tab" role="tab" id="tab-ca" data-act="tab" data-tab="ca" aria-selected="false" aria-controls="view-ca">Cargas académicas <span class="n" id="tab-ca-n"></span></button>
+    <button class="tab" role="tab" id="tab-poa" data-act="tab" data-tab="poa" aria-selected="false" aria-controls="view-poa">Plan operativo (POA) <span class="n" id="tab-poa-n"></span></button>
+  </div>
+
+  <div id="mensajes"></div>
+
+  <div class="view" id="view-proy" role="tabpanel" aria-labelledby="tab-proy">
+  <div class="stats" id="resumen" aria-label="Resumen"></div>
+
+  <section id="pendientes" aria-labelledby="pend-titulo">
+    <div class="sec-head">
+      <h2 id="pend-titulo">Pendientes de asignación</h2>
+      <div class="seg" role="group" aria-label="Año de los pendientes" id="pend-anios"></div>
+    </div>
+    <div class="pend-grid" id="pend-body"></div>
+  </section>
+
+  <nav class="nav" aria-label="Secciones">
+    <a href="#tablero">Tablero</a><a href="#docentes">¿Dónde estoy?</a><a href="#tablas">Tablas para Word</a><a href="#gestion">Gestión</a>
+  </nav>
+
+  <section id="tablero">
+    <div class="sec-head">
+      <h2>Tablero por proyecto</h2>
+      <div class="legend" aria-label="Convenciones">
+        <span class="chip cont"><span class="chip-main" style="padding-right:14px"><span class="tag">Continúa</span></span></span>
+        <span class="chip in"><span class="chip-main" style="padding-right:14px"><span class="tag">+ Ingresa</span></span></span>
+        <span class="chip out"><span class="chip-main" style="padding-right:14px"><span class="tag">Sale</span></span></span>
+      </div>
+    </div>
+    <div class="dg-tools">
+      <div class="field"><label for="p-filtro">Buscar por proyecto o docente</label><input type="text" id="p-filtro" placeholder="Ej.: Bilingüismo, Leonora" autocomplete="off"></div>
+      <div class="seg" role="group" aria-label="Filtrar proyectos">
+        <button class="segb" id="pc-todos" data-act="pCon" data-v="todos" aria-pressed="true">Todos</button>
+        <button class="segb" id="pc-con" data-act="pCon" data-v="con" aria-pressed="false">Con docentes</button>
+        <button class="segb" id="pc-sin" data-act="pCon" data-v="sin" aria-pressed="false">Sin docentes</button>
+      </div>
+      <span class="muted" id="pf-n" role="status"></span>
+      <form class="new-proj" data-form="newProj">
+        <div class="field"><label for="np-top">Nuevo proyecto</label><input type="text" id="np-top" placeholder="Nombre del proyecto" autocomplete="off"></div>
+        <button class="btn primary" type="submit">Crear proyecto</button>
+      </form>
+    </div>
+    <div class="board" id="board"></div>
+  </section>
+
+  <section id="docentes">
+    <div class="sec-head"><h2>¿Dónde estoy?</h2><span class="muted">Elegí un docente para resaltar sus proyectos.</span></div>
+    <div class="who" id="who"></div>
+  </section>
+
+  <section id="tablas">
+    <div class="sec-head"><h2>Tablas para Word</h2><span class="muted">Lo mismo que queda en el documento descargado.</span></div>
+    <div id="tablas-body" style="display:flex;flex-direction:column;gap:18px"></div>
+  </section>
+
+  <section id="gestion">
+    <div class="sec-head"><h2>Gestión</h2></div>
+    <div class="manage" id="manage"></div>
+  </section>
+  </div>
+
+  <div class="view" id="view-act" role="tabpanel" aria-labelledby="tab-act" hidden>
+    <section id="actividades">
+      <div class="sec-head"><h2 id="act-titulo">Actividades institucionales</h2><span class="muted" id="act-resumen"></span></div>
+      <div class="act-tools">
+        <div class="field"><label for="act-filtro">Buscar por actividad, responsable o mes</label><input type="text" id="act-filtro" placeholder="Ej.: Leonora, primaria, mayo" autocomplete="off"></div>
+      </div>
+      <details class="panel" id="act-nueva">
+        <summary>Agregar actividad</summary>
+        <form class="act-new" data-form="newAct" id="act-form">
+          <div class="field"><label for="na-fecha">Fecha</label><input type="date" id="na-fecha" data-k="fecha" required></div>
+          <div class="field"><label for="na-act">Actividad</label><input type="text" id="na-act" data-k="actividad" required placeholder="Nombre de la actividad"></div>
+          <div class="field"><label for="na-resp">Responsables (separados por ;)</label><input type="text" id="na-resp" data-k="responsables" placeholder="Ej.: Leonora; Nancy Velazco"></div>
+          <button class="btn primary" type="submit">Agregar</button>
+        </form>
+      </details>
+      <div id="act-list"></div>
+    </section>
+  </div>
+
+  <div class="view" id="view-dg" role="tabpanel" aria-labelledby="tab-dg" hidden>
+    <section id="direcciones">
+      <div class="sec-head"><h2 id="dg-titulo">Direcciones de grupo</h2><span class="muted" id="dg-resumen"></span></div>
+      <div class="dg-tools">
+        <div class="field"><label for="dg-filtro">Buscar por grupo, docente o jornada</label><input type="text" id="dg-filtro" placeholder="Ej.: 9B, Leonora, mañana" autocomplete="off"></div>
+        <div class="field anio"><label for="dg-anio">Año</label><input type="text" id="dg-anio" inputmode="numeric" autocomplete="off"></div>
+      </div>
+      <details class="panel" id="dg-nueva">
+        <summary>Agregar docente</summary>
+        <form class="dg-new" data-form="newDg" id="dg-form">
+          <div class="field"><label for="nd-grupo">Grupo (vacío si no dirige)</label><input type="text" id="nd-grupo" data-k="grupo" placeholder="Ej.: 11B"></div>
+          <div class="field"><label for="nd-doc">Docente</label><input type="text" id="nd-doc" data-k="docente" required placeholder="Nombre del director de grupo"></div>
+          <div class="field"><label for="nd-jor">Jornada</label><select id="nd-jor" data-k="jornada"><option value="">Sin definir</option><option>Mañana</option><option>Tarde</option></select></div>
+          <div class="field"><label for="nd-sede">Sede</label><input type="text" id="nd-sede" data-k="sede" value="Principal"></div>
+          <button class="btn primary" type="submit">Agregar</button>
+        </form>
+      </details>
+      <div id="dg-list"></div>
+    </section>
+  </div>
+
+  <div class="view" id="view-ca" role="tabpanel" aria-labelledby="tab-ca" hidden>
+    <section id="cargas">
+      <div class="sec-head"><h2 id="ca-titulo">Cargas académicas</h2><span class="muted" id="ca-resumen"></span></div>
+      <div class="dg-tools">
+        <div class="field"><label for="ca-filtro">Buscar por docente, asignatura o grupo</label><input type="text" id="ca-filtro" placeholder="Ej.: Matemáticas, 9B, Tatiana" autocomplete="off"></div>
+        <div class="seg" role="group" aria-label="Forma de ver las cargas">
+          <button class="segb" id="cav-matriz" data-act="caView" data-v="matriz" aria-pressed="true">Matriz</button>
+          <button class="segb" id="cav-docente" data-act="caView" data-v="docente" aria-pressed="false">Por docente</button>
+          <button class="segb" id="cav-grupo" data-act="caView" data-v="grupo" aria-pressed="false">Por grupo</button>
+        </div>
+      </div>
+      <details class="panel" id="ca-nueva">
+        <summary>Agregar carga</summary>
+        <form class="ca-new" data-form="newCa" id="ca-form">
+          <div class="field"><label for="nc-doc">Docente</label><input type="text" id="nc-doc" data-k="docente" list="ca-docs" required autocomplete="off"></div>
+          <div class="field"><label for="nc-asig">Asignatura</label><input type="text" id="nc-asig" data-k="asignatura" list="ca-asigs" required autocomplete="off"></div>
+          <div class="field"><label for="nc-grupo">Grupo</label><input type="text" id="nc-grupo" data-k="grupo" required placeholder="Ej.: 9B"></div>
+          <div class="field"><label for="nc-horas">Horas</label><input type="number" id="nc-horas" data-k="horas" min="1" max="40" step="1" required></div>
+          <button class="btn primary" type="submit">Agregar</button>
+        </form>
+        <datalist id="ca-docs"></datalist><datalist id="ca-asigs"></datalist>
+      </details>
+      <div id="ca-edit"></div>
+      <div id="ca-body"></div>
+    </section>
+  </div>
+
+  <div class="view" id="view-poa" role="tabpanel" aria-labelledby="tab-poa" hidden>
+    <div class="stats" id="poa-kpis" aria-label="Resumen del plan operativo"></div>
+    <section id="poa">
+      <div class="sec-head"><h2 id="poa-titulo">Plan Operativo Anual</h2><span class="muted" id="poa-resumen"></span></div>
+      <div class="mes-bar" id="poa-meses" role="group" aria-label="Mes del plan operativo"></div>
+      <div class="dg-tools">
+        <div class="field"><label for="poa-filtro">Buscar en todo el año: actividad, asistentes, lugar o responsable</label><input type="text" id="poa-filtro" placeholder="Ej.: consejo académico, Tatiana, aula múltiple" autocomplete="off"></div>
+        <div class="seg" role="group" aria-label="Filtrar actividades del plan">
+          <button class="segb" id="poap-todas" data-act="poaPend" data-v="todas" aria-pressed="true">Todas</button>
+          <button class="segb" id="poap-pend" data-act="poaPend" data-v="pend" aria-pressed="false">Con datos por definir</button>
+        </div>
+      </div>
+      <details class="panel" id="poa-nueva">
+        <summary>Agregar actividad al plan</summary>
+        <form class="poa-form" data-form="newPoa" id="poa-form">
+          <div class="field"><label for="po-fecha">Fecha</label><input type="date" id="po-fecha" data-k="fecha" required></div>
+          <div class="field"><label for="po-sem">Semana</label><input type="text" id="po-sem" data-k="semana" placeholder="Ej.: SEM 42 / ESC 34"></div>
+          <div class="field wide"><label for="po-act">Actividad</label><input type="text" id="po-act" data-k="actividad" required></div>
+          <div class="field"><label for="po-asis">Asistentes</label><input type="text" id="po-asis" data-k="asistentes"></div>
+          <div class="field"><label for="po-hora">Hora</label><input type="text" id="po-hora" data-k="hora" placeholder="Ej.: 7:00 a.m."></div>
+          <div class="field"><label for="po-sede">Sede</label><input type="text" id="po-sede" data-k="sede" value="Central I.E.M.F"></div>
+          <div class="field"><label for="po-lugar">Medio o lugar</label><input type="text" id="po-lugar" data-k="lugar"></div>
+          <div class="field"><label for="po-resp">Responsables</label><input type="text" id="po-resp" data-k="responsables"></div>
+          <button class="btn primary" type="submit">Agregar</button>
+        </form>
+      </details>
+      <div id="poa-list"></div>
+    </section>
+    <section id="periodicas">
+      <div class="sec-head"><h2>Actividades periódicas</h2><span class="muted" id="per-resumen"></span></div>
+      <details class="panel" id="per-nueva">
+        <summary>Agregar actividad periódica</summary>
+        <form class="poa-form" data-form="newPer" id="per-form">
+          <div class="field wide"><label for="pe-act">Actividad</label><input type="text" id="pe-act" data-k="actividad" required></div>
+          <div class="field"><label for="pe-per">Periodicidad</label><input type="text" id="pe-per" data-k="periodicidad" placeholder="Ej.: Semanal"></div>
+          <div class="field"><label for="pe-hor">Horario</label><input type="text" id="pe-hor" data-k="horario"></div>
+          <div class="field"><label for="pe-resp">Responsable</label><input type="text" id="pe-resp" data-k="responsable"></div>
+          <div class="field wide"><label for="pe-obs">Observación</label><input type="text" id="pe-obs" data-k="observacion"></div>
+          <div class="field"><label for="pe-seg">Seguimiento</label><input type="text" id="pe-seg" data-k="seguimiento"></div>
+          <button class="btn primary" type="submit">Agregar</button>
+        </form>
+      </details>
+      <div id="per-edit"></div>
+      <div id="per-list"></div>
+    </section>
+  </div>
+</div>
