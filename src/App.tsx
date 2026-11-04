@@ -3,6 +3,8 @@ import type { ReactNode } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { configured, fetchRole, supabase, type Role } from "./lib/supabase";
 import { Portal } from "./Portal";
+import { GateShell } from "./components/GateShell";
+import { LoginScreen } from "./components/LoginScreen";
 
 type View =
   | { s: "loading" }
@@ -52,53 +54,71 @@ export function App() {
 
   if (!configured)
     return (
-      <Screen title="Configuración pendiente">
-        Faltan las variables <code>VITE_SUPABASE_URL</code> y <code>VITE_SUPABASE_ANON_KEY</code>. Copiá{" "}
-        <code>.env.example</code> a <code>.env</code>.
-      </Screen>
+      <StatusScreen title="Configuración pendiente">
+        <p className="gate-lead">
+          Faltan las variables <code>VITE_SUPABASE_URL</code> y <code>VITE_SUPABASE_ANON_KEY</code>. Copiá{" "}
+          <code>.env.example</code> a <code>.env</code>.
+        </p>
+      </StatusScreen>
     );
 
-  if (view.s === "loading") return <Screen title="Cargando…" />;
+  if (view.s === "loading")
+    return (
+      <StatusScreen title="Cargando…" busy>
+        <p className="gate-lead">Verificando tu sesión.</p>
+      </StatusScreen>
+    );
 
   if (view.s === "unauthorized")
     return (
-      <Screen title="No autorizado">
-        La cuenta <b>{view.email}</b> no está habilitada para usar este portal. Pedile al administrador que la agregue
-        y volvé a intentarlo con otra cuenta.
-        <button className="btn" onClick={() => setView({ s: "signedOut" })}>
-          Volver
+      <StatusScreen title="No autorizado" eyebrow="Acceso restringido">
+        <p className="gate-lead">
+          La cuenta <b className="gate-email">{view.email}</b> no figura en la lista de usuarios habilitados para este
+          portal.
+        </p>
+        <p className="gate-note gate-note--first">
+          Para solicitar acceso, escribile a la coordinación o a quien administra el portal indicando este correo. Si
+          ingresaste con una cuenta equivocada, cerrá sesión y probá con tu correo autorizado.
+        </p>
+        <button className="gate-btn" onClick={() => setView({ s: "signedOut" })}>
+          Cerrar sesión
         </button>
-      </Screen>
+      </StatusScreen>
     );
 
   if (view.s === "signedOut")
     return (
-      <Screen title="Portal de Gestión I.E. Marco Fidel Suárez">
-        Iniciá sesión con tu cuenta de Google autorizada.
-        {view.error && <p className="err">{view.error}</p>}
-        <button
-          className="btn"
-          onClick={() =>
-            supabase.auth.signInWithOAuth({
-              provider: "google",
-              options: { redirectTo: window.location.origin },
-            })
-          }
-        >
-          Continuar con Google
-        </button>
-      </Screen>
+      <LoginScreen
+        error={view.error}
+        onSignIn={() =>
+          supabase.auth.signInWithOAuth({
+            provider: "google",
+            options: { redirectTo: window.location.origin },
+          })
+        }
+      />
     );
 
   return <Portal role={view.role} email={view.email} onSignOut={() => void supabase.auth.signOut()} />;
 }
 
-function Screen({ title, children }: { title: string; children?: ReactNode }) {
+function StatusScreen({
+  title,
+  eyebrow,
+  busy,
+  children,
+}: {
+  title: string;
+  eyebrow?: string;
+  busy?: boolean;
+  children?: ReactNode;
+}) {
   return (
-    <main className="gate">
-      <img src="/escudo.jpg" alt="Escudo" width={88} height={88} />
-      <h1>{title}</h1>
-      <div className="gate-body">{children}</div>
-    </main>
+    <GateShell compact>
+      {eyebrow && <p className="gate-eyebrow">{eyebrow}</p>}
+      <h1 className="gate-title">{title}</h1>
+      {busy && <span className="gate-spinner" role="status" aria-label="Cargando" />}
+      {children}
+    </GateShell>
   );
 }
