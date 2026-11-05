@@ -71,7 +71,7 @@ export function App() {
 
   if (view.s === "unauthorized")
     return (
-      <StatusScreen title="No autorizado" eyebrow="Acceso restringido">
+      <StatusScreen title="Esta cuenta no tiene acceso">
         <p className="gate-lead">
           La cuenta <b className="gate-email">{view.email}</b> no figura en la lista de usuarios habilitados para este
           portal.
@@ -104,18 +104,15 @@ export function App() {
 
 function StatusScreen({
   title,
-  eyebrow,
   busy,
   children,
 }: {
   title: string;
-  eyebrow?: string;
   busy?: boolean;
   children?: ReactNode;
 }) {
   return (
     <GateShell compact>
-      {eyebrow && <p className="gate-eyebrow">{eyebrow}</p>}
       <h1 className="gate-title">{title}</h1>
       {busy && <span className="gate-spinner" role="status" aria-label="Cargando" />}
       {children}

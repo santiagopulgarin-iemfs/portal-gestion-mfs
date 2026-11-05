@@ -41,7 +41,7 @@
   </section>
 
   <nav class="nav" aria-label="Secciones">
-    <a href="#tablero">Tablero</a><a href="#docentes">¿Dónde estoy?</a><a href="#tablas">Tablas para Word</a><a href="#gestion">Gestión</a>
+    <a href="#tablero">Tablero</a><a href="#docentes">Proyectos por docente</a><a href="#tablas">Tablas para Word</a><a href="#gestion">Gestión</a>
   </nav>
 
   <section id="tablero">
@@ -70,7 +70,7 @@
   </section>
 
   <section id="docentes">
-    <div class="sec-head"><h2>¿Dónde estoy?</h2><span class="muted">Elegí un docente para resaltar sus proyectos.</span></div>
+    <div class="sec-head"><h2>Proyectos por docente</h2><span class="muted">Elegí un docente para resaltar sus proyectos.</span></div>
     <div class="who" id="who"></div>
   </section>
 
@@ -97,7 +97,7 @@
           <div class="field"><label for="na-fecha">Fecha</label><input type="date" id="na-fecha" data-k="fecha" required></div>
           <div class="field"><label for="na-act">Actividad</label><input type="text" id="na-act" data-k="actividad" required placeholder="Nombre de la actividad"></div>
           <div class="field"><label for="na-resp">Responsables (separados por ;)</label><input type="text" id="na-resp" data-k="responsables" placeholder="Ej.: Leonora; Nancy Velazco"></div>
-          <button class="btn primary" type="submit">Agregar</button>
+          <button class="btn primary" type="submit">Agregar actividad</button>
         </form>
       </details>
       <div id="act-list"></div>
@@ -115,7 +115,7 @@
       <div class="panel dg-confirm" id="dg-anio-confirm" role="alertdialog" aria-labelledby="dg-anio-confirm-t" aria-describedby="dg-anio-confirm-d" hidden>
         <h3 id="dg-anio-confirm-t">¿Cambiar el año de las direcciones de grupo?</h3>
         <p id="dg-anio-confirm-d"></p>
-        <div class="row"><button class="btn primary" type="button" id="dg-anio-ok" data-act="dgAnioOk">Confirmar</button><button class="btn" type="button" id="dg-anio-no" data-act="dgAnioNo">Cancelar</button></div>
+        <div class="row"><button class="btn primary" type="button" id="dg-anio-ok" data-act="dgAnioOk">Cambiar año</button><button class="btn" type="button" id="dg-anio-no" data-act="dgAnioNo">Cancelar</button></div>
       </div>
       <div class="msg dg-aviso" id="dg-aviso" role="status" aria-live="polite" hidden></div>
       <details class="panel" id="dg-nueva">
@@ -125,7 +125,7 @@
           <div class="field"><label for="nd-doc">Docente</label><input type="text" id="nd-doc" data-k="docente" required placeholder="Nombre del director de grupo"></div>
           <div class="field"><label for="nd-jor">Jornada</label><select id="nd-jor" data-k="jornada"><option value="">Sin definir</option><option>Mañana</option><option>Tarde</option></select></div>
           <div class="field"><label for="nd-sede">Sede</label><input type="text" id="nd-sede" data-k="sede" value="Principal"></div>
-          <button class="btn primary" type="submit">Agregar</button>
+          <button class="btn primary" type="submit">Agregar a la lista</button>
         </form>
       </details>
       <div id="dg-list"></div>
@@ -150,7 +150,7 @@
           <div class="field"><label for="nc-asig">Asignatura</label><input type="text" id="nc-asig" data-k="asignatura" list="ca-asigs" required autocomplete="off"></div>
           <div class="field"><label for="nc-grupo">Grupo</label><input type="text" id="nc-grupo" data-k="grupo" required placeholder="Ej.: 9B"></div>
           <div class="field"><label for="nc-horas">Horas</label><input type="number" id="nc-horas" data-k="horas" min="1" max="40" step="1" required></div>
-          <button class="btn primary" type="submit">Agregar</button>
+          <button class="btn primary" type="submit">Agregar carga</button>
         </form>
         <datalist id="ca-docs"></datalist><datalist id="ca-asigs"></datalist>
       </details>
@@ -182,7 +182,7 @@
           <div class="field"><label for="po-sede">Sede</label><input type="text" id="po-sede" data-k="sede" value="Central I.E.M.F"></div>
           <div class="field"><label for="po-lugar">Medio o lugar</label><input type="text" id="po-lugar" data-k="lugar"></div>
           <div class="field"><label for="po-resp">Responsables</label><input type="text" id="po-resp" data-k="responsables"></div>
-          <button class="btn primary" type="submit">Agregar</button>
+          <button class="btn primary" type="submit">Agregar al plan</button>
         </form>
       </details>
       <div id="poa-list"></div>
@@ -198,7 +198,7 @@
           <div class="field"><label for="pe-resp">Responsable</label><input type="text" id="pe-resp" data-k="responsable"></div>
           <div class="field wide"><label for="pe-obs">Observación</label><input type="text" id="pe-obs" data-k="observacion"></div>
           <div class="field"><label for="pe-seg">Seguimiento</label><input type="text" id="pe-seg" data-k="seguimiento"></div>
-          <button class="btn primary" type="submit">Agregar</button>
+          <button class="btn primary" type="submit">Agregar periódica</button>
         </form>
       </details>
       <div id="per-edit"></div>

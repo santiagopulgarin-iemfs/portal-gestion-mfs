@@ -40,7 +40,6 @@ body:has(.gate-page){margin:0;background:var(--bg)}
   box-shadow:var(--sh-pop);display:flex;flex-direction:column;align-items:stretch;gap:0;overflow:hidden;
 }
 .gate-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--g-verde)}
-.gate-eyebrow{margin:0 0 var(--s-2);font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--g-oro-ink)}
 .gate-title{margin:0;font-family:var(--g-display);font-weight:700;font-size:clamp(1.7rem,4vw,2.2rem);line-height:1.1;letter-spacing:-.01em;color:var(--g-ink);text-wrap:balance}
 .gate-lead{margin:var(--s-4) 0 0;color:var(--g-ink-2);text-wrap:pretty}
 .gate-lead code{font-family:var(--g-body);font-weight:600;font-size:.85em;background:var(--sunk-2);padding:1px 5px;border-radius:var(--r-xs)}

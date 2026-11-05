@@ -37,7 +37,6 @@ export function LoginScreen({ error, onSignIn }: Props) {
 
   return (
     <GateShell>
-      <p className="gate-eyebrow">Acceso institucional</p>
       <h1 className="gate-title">Portal de Gestión</h1>
       <p className="gate-lead">
         Espacio de trabajo para proyectos, actividades, direcciones de grupo, cargas académicas y el plan operativo.
