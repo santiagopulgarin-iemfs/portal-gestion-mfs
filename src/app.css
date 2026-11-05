@@ -1,7 +1,7 @@
-/* Barra de sesión del portal: flota abajo a la derecha, mismo lenguaje que el resto (papel, filete, verde). */
-.session-bar{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:50;display:flex;gap:var(--s-2);align-items:center;max-width:calc(100vw - 24px);padding:4px 4px 4px var(--s-4);border-radius:var(--r-pill);background:var(--surface);color:var(--ink-2);border:1px solid var(--line-strong);box-shadow:var(--sh-pop);font:500 var(--fs-xs)/1.2 var(--body)}
+/* Barra de sesión del portal: flota abajo a la derecha, mismo lenguaje que el resto (papel, verde). */
+.session-bar{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:50;display:flex;gap:var(--s-2);align-items:center;max-width:calc(100vw - 24px);padding:4px 4px 4px var(--s-4);border-radius:var(--r-pill);background:var(--surface);color:var(--ink-2);border:1px solid var(--line-strong);box-shadow:var(--sh-pop);font:500 var(--fs-xs)/1.2 var(--font)}
 .session-bar span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.session-bar button{flex:none;background:var(--verde);border:1px solid var(--verde);color:var(--on-verde);border-radius:var(--r-pill);padding:6px var(--s-4);min-height:32px;font:600 var(--fs-xs)/1 var(--body);transition:background-color var(--dur-1) ease,transform var(--dur-1) var(--ease)}
+.session-bar button{flex:none;background:var(--verde);border:1px solid var(--verde);color:var(--on-verde);border-radius:var(--r-pill);padding:6px var(--s-4);min-height:32px;font:500 var(--fs-xs)/1 var(--font);transition:background-color var(--dur-1) ease,transform var(--dur-1) var(--ease)}
 .session-bar button:active{transform:scale(.97)}
 .session-bar button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
 @media (hover:hover) and (pointer:fine){.session-bar button:hover{background:var(--verde-hondo)}}
