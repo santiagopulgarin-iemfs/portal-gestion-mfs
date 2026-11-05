@@ -14,7 +14,8 @@ body:has(.gate-page){margin:0;background:var(--bg)}
 .gate-page *,.gate-page *::before,.gate-page *::after{box-sizing:border-box}
 
 /* Franja superior: verde hondo con filete dorado, igual que la cabecera del portal. */
-.gate-band{height:12px;background:var(--verde-hondo);border-bottom:3px solid var(--oro)}
+.gate-band{position:relative;height:16px;background:var(--verde-hondo)}
+.gate-band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--verde) 0 34%,var(--azul) 34% 67%,var(--oro) 67% 100%)}
 
 .gate-main{
   flex:1;width:100%;max-width:1080px;margin:0 auto;display:grid;align-items:center;
@@ -36,10 +37,11 @@ body:has(.gate-page){margin:0;background:var(--bg)}
 /* Tarjeta de acción */
 .gate-card{
   position:relative;background:var(--g-card);border:1px solid var(--g-line);border-radius:var(--r);
-  padding:clamp(24px,4vw,40px) clamp(20px,4vw,36px) clamp(24px,4vw,36px) clamp(24px,4vw,40px);
+  padding:clamp(28px,4vw,44px) clamp(20px,4vw,40px) clamp(24px,4vw,40px);
   box-shadow:var(--sh-pop);display:flex;flex-direction:column;align-items:stretch;gap:0;overflow:hidden;
 }
-.gate-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--g-verde)}
+/* Mismo filete tricolor del escudo que lleva la cabecera del portal */
+.gate-card::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--verde) 0 34%,var(--azul) 34% 67%,var(--oro) 67% 100%)}
 .gate-title{margin:0;font-family:var(--g-display);font-weight:700;font-size:clamp(1.7rem,4vw,2.2rem);line-height:1.1;letter-spacing:-.01em;color:var(--g-ink);text-wrap:balance}
 .gate-lead{margin:var(--s-4) 0 0;color:var(--g-ink-2);text-wrap:pretty}
 .gate-lead code{font-family:var(--g-body);font-weight:600;font-size:.85em;background:var(--sunk-2);padding:1px 5px;border-radius:var(--r-xs)}
@@ -48,7 +50,7 @@ body:has(.gate-page){margin:0;background:var(--bg)}
 .gate-note{margin:var(--s-4) 0 0;padding-top:var(--s-4);border-top:1px solid var(--line);font-size:var(--fs-sm);color:var(--g-muted);text-wrap:pretty}
 .gate-note--first{margin-top:var(--s-4)}
 
-.gate-alert{display:flex;gap:10px;align-items:flex-start;margin:var(--s-5) 0 0;padding:var(--s-3) 14px;border:1px solid color-mix(in srgb,var(--g-err) 40%,var(--line));border-left:4px solid var(--g-err);background:var(--g-err-bg);color:var(--g-err);border-radius:var(--r-sm);font-size:var(--fs-md);font-weight:500}
+.gate-alert{display:flex;gap:10px;align-items:flex-start;margin:var(--s-5) 0 0;padding:var(--s-3) 14px;border:1px solid color-mix(in srgb,var(--g-err) 40%,var(--line));background:var(--g-err-bg);color:var(--g-err);border-radius:var(--r-sm);font-size:var(--fs-md);font-weight:500}
 .gate-alert svg{flex:none;margin-top:2px}
 
 /* Botón Google: guía de marca (fondo blanco, borde gris, "G" oficial, etiqueta clara). Los colores de la "G" y del botón son de Google. */
@@ -95,8 +97,7 @@ body:has(.gate-page){margin:0;background:var(--bg)}
 @media (max-width:859px){
   .gate-id{padding-bottom:0}
   .gate-crest img{width:112px!important;height:112px!important}
-  .gate-card::before{width:100%;height:5px;bottom:auto}
-  .gate-card{padding-top:30px;padding-left:clamp(20px,4vw,36px)}
+  .gate-card{padding-top:30px}
 }
 @media (pointer:coarse){.g-btn,.gate-btn{min-height:var(--tap)}}
 @media (max-width:380px){.gate-inst strong{font-size:1.45rem}.gate-main{padding-inline:12px}}
