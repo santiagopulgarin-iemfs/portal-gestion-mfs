@@ -496,8 +496,24 @@ details.panel[open] > :not(summary){animation:fade-in var(--dur-2) ease-out}
   .nav{gap:0 var(--s-4)}
   .nav a{display:inline-flex;align-items:center}
 }
+/* Impresión (de pantalla a papel): solo contenido; sin cabecera de acciones, pestañas, formularios ni barra de sesión; tablas completas y mapa de calor conservado */
+@media print{
+  .top-actions,.tabbar,.session-bar,.nav,details.panel,.dg-tools,.btn,.chip-x,#mensajes{display:none!important}
+  body{background:#fff}
+  .top{background:#fff;color:#000}
+  .top h1,.brand-sub{color:#000}
+  .top::after{display:none}
+  .wrap{max-width:none;padding:0}
+  .tbl-wrap,.tbl-wrap:has(table.mx){max-height:none;overflow:visible}
+  table,table.mx{min-width:0}
+  .mx th[scope=row],.mx thead th,.mx tfoot td,.mx tfoot th{position:static}
+  .proj,.week,.dg,.act,.ca-card,.pend,.stat{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
 /* Teléfono */
 @media (max-width:560px){
+  /* la barra de pestañas se desplaza: el degradado del borde derecho avisa que hay más pestañas */
+  .tabs{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 16px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 16px),transparent)}
   :root{--gutter:16px}
   .brand-sub{display:none}
   h1{font-size:1.0625rem}
