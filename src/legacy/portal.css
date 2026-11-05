@@ -192,7 +192,10 @@ td.num,th.num{text-align:right}
 .pend-head b{font-size:var(--fs-xl);font-weight:700;line-height:1;font-variant-numeric:tabular-nums lining-nums}
 .pend.warn .pend-head b{color:var(--accent)}
 .pend.ok .pend-head b{color:var(--in)}
-.pend-ok{margin:0;color:var(--in);font-size:var(--fs-sm);font-weight:600}
+.pend-ok{margin:0;color:var(--in);font-size:var(--fs-sm);font-weight:600;display:flex;align-items:center;gap:var(--s-2)}
+/* Momento de "todo asignado": marca de verificación dibujada con bordes (sin glifos ni emoji); también es una señal que no depende del color */
+.pend-ok::before,.st-ok .tag::before{content:"";flex:none;display:inline-block;width:9px;height:5px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(-45deg) translate(1px,-1px)}
+.st-ok .tag::before{width:7px;height:4px;border-left:1.5px solid currentColor;border-bottom:1.5px solid currentColor;margin:0 6px 1px 1px}
 .pend-sub{margin:var(--s-1) 0 0;font-size:var(--fs-xs);font-weight:700;color:var(--ink-2)}
 .pend-item{border:1px solid var(--line-strong);background:var(--raised);border-radius:var(--r-sm);padding:4px 10px;font-size:var(--fs-sm);font-weight:500;text-align:left;overflow-wrap:anywhere}
 .pend-item.ext{cursor:default;border-style:dashed}
