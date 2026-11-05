@@ -189,7 +189,7 @@ function wtbl(t){
 function docx(){
   var fecha=new Date().toLocaleDateString("es-CO",{day:"numeric",month:"long",year:"numeric"});
   var body=wp(state.institucion||"I.E. Marco Fidel Suárez",{bold:true,size:36,after:60})+
-    wp(ui.tab==="poa"?"Plan operativo anual":ui.tab==="ca"?"Cargas académicas":ui.tab==="dg"?"Direcciones de grupo":ui.tab==="act"?"Actividades institucionales":"Asignación de proyectos institucionales",{size:26,after:40})+
+    wp(ui.tab==="poa"?"Plan operativo anual":ui.tab==="ca"?"Cargas académicas":ui.tab==="dg"?("Direcciones de grupo "+dg.anio).trim():ui.tab==="act"?"Actividades institucionales":"Asignación de proyectos institucionales",{size:26,after:40})+
     wp("Fecha: "+fecha,{size:20,color:"555555",after:240});
   tablas(ui.tab).forEach(function(t){body+=wp(t.titulo,{bold:true,size:28,before:240,after:120})+wtbl(t)+wp("",{after:0});});
   body+='<w:sectPr><w:pgSz w:w="15840" w:h="12240" w:orient="landscape"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="708" w:footer="708" w:gutter="0"/></w:sectPr>';
@@ -394,7 +394,7 @@ function flushDg(){
 function adoptDg(data){
   var n=normDg(data),j=JSON.stringify(n);
   if(j===JSON.stringify(dg)){dgLast=j;if(!ui.editDg)renderDg();return;}
-  if(ui.editDg){dgPending=n;return;}
+  if(ui.editDg){dgPending=n;if(n.anio!==dg.anio){dg.anio=n.anio;dgTitulos();}return;}
   dg=n;dgLast=j;renderDg();
 }
 function jornadaOpts(v){
@@ -418,11 +418,16 @@ function dgRow(a){
     (c||'<span class="row"><button class="btn small" id="eg-'+id+'" data-act="editDg" data-id="'+id+'">Editar</button><button class="btn small danger" id="dd-'+id+'" data-act="ask" data-key="'+esc("dg:"+a.id)+'">Eliminar</button></span>')+
     '</div></article>';
 }
+/* Títulos que dependen del año de direcciones (textContent: sin HTML) */
+function dgTitulos(){
+  var t=$("dg-titulo");if(t)t.textContent=("Direcciones de grupo "+dg.anio).trim();
+  var p=$("tab-dg-anio");if(p)p.textContent=dg.anio||"";
+}
 function renderDg(){
   var list=$("dg-list");if(!list)return;
   var orden=dgOrden(),con=orden.filter(function(a){return a.grupo;}),n=con.length,libres=orden.length-n,man=0,tar=0,sin=0;
   con.forEach(function(a){var j=plano(a.jornada);if(j.indexOf("man")===0)man++;else if(j.indexOf("tar")===0)tar++;else if(!j)sin++;});
-  $("dg-titulo").textContent=("Direcciones de grupo "+dg.anio).trim();
+  dgTitulos();
   $("tab-dg-n").textContent=n?String(n):"";
   $("dg-resumen").textContent=!dg.items.length?"":n+(n===1?" grupo":" grupos")+" · "+tar+" en la tarde · "+man+" en la mañana"+(sin?" · "+sin+" sin jornada":"")+(libres?" · "+libres+(libres===1?" docente":" docentes")+" sin dirección de grupo":"");
   var an=$("dg-anio");if(an&&an!==document.activeElement&&dgAnioNuevo===null)an.value=dg.anio;

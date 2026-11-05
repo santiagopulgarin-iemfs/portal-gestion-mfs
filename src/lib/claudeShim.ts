@@ -8,6 +8,7 @@ import type { RealtimeChannel } from "@supabase/supabase-js";
 import { supabase, type Role } from "./supabase";
 
 const POLL_MS = 8000;
+let chanSeq = 0;
 
 type Snap = { exists: boolean; data: () => unknown; metadata: { hasPendingWrites: boolean } };
 type Row = { data: unknown; updated_at: string };
@@ -50,20 +51,34 @@ function docRef(path: string, email: string) {
       const poll = setInterval(() => void load(false), POLL_MS);
       let channel: RealtimeChannel | null = null;
       try {
+        // Nombre único por suscripción: evita reutilizar un canal ya suscrito.
         channel = supabase
-          .channel("app_docs:" + path)
+          .channel("app_docs:" + path + ":" + ++chanSeq)
           .on(
             "postgres_changes",
             { event: "*", schema: "public", table: "app_docs", filter: "key=eq." + path },
             () => void load(false),
           )
-          .subscribe();
+          .subscribe((status) => {
+            // Al (re)conectar se pudo perder algún evento: se relee el documento.
+            if (status === "SUBSCRIBED") void load(false);
+          });
       } catch {
         /* queda el polling */
       }
+      // Refresco al volver a la pestaña o recuperar red (los timers se frenan en segundo plano).
+      const refetch = () => {
+        if (document.visibilityState !== "hidden") void load(false);
+      };
+      document.addEventListener("visibilitychange", refetch);
+      window.addEventListener("online", refetch);
+      window.addEventListener("focus", refetch);
       return () => {
         stopped = true;
         clearInterval(poll);
+        document.removeEventListener("visibilitychange", refetch);
+        window.removeEventListener("online", refetch);
+        window.removeEventListener("focus", refetch);
         if (channel) void supabase.removeChannel(channel);
       };
     },
