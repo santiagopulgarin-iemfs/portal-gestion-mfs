@@ -346,6 +346,8 @@ function setTab(t,save){
   $("tab-dg").setAttribute("aria-selected",String(ui.tab==="dg"));
   $("tab-ca").setAttribute("aria-selected",String(ui.tab==="ca"));
   $("tab-poa").setAttribute("aria-selected",String(ui.tab==="poa"));
+  /* tabindex itinerante (patrón WAI-ARIA tabs): solo la pestaña activa entra en el orden de Tab */
+  [].forEach.call(document.querySelectorAll('.tabs [role="tab"]'),function(b){b.tabIndex=b.getAttribute("aria-selected")==="true"?0:-1;});
   $("btn-copiar").textContent=ui.tab==="poa"?"Copiar POA":ui.tab==="ca"?"Copiar cargas":ui.tab==="dg"?"Copiar direcciones":ui.tab==="act"?"Copiar actividades":"Copiar proyectos";
   $("btn-word").textContent=ui.tab==="poa"?"Word del POA":ui.tab==="ca"?"Word de cargas":ui.tab==="dg"?"Word de direcciones":ui.tab==="act"?"Word de actividades":"Word de proyectos";
   if(save){try{localStorage.setItem(TAB_LS,ui.tab);}catch(e){}}
@@ -570,7 +572,7 @@ function caFilas(){
 }
 function caMatriz(vis){
   var docs=unicos(vis.map(function(a){return a.docente;})),grupos=unicos(vis.map(function(a){return a.grupo;}));
-  var h='<div class="tbl-wrap"><table class="mx"><thead><tr><th>Docente</th>'+grupos.map(function(g){return '<th>'+esc(g)+'</th>';}).join("")+'<th class="num">Total docente</th></tr></thead><tbody>';
+  var h='<div class="tbl-wrap" tabindex="0" role="region" aria-label="Matriz de cargas académicas (desplazable)"><table class="mx"><thead><tr><th>Docente</th>'+grupos.map(function(g){return '<th>'+esc(g)+'</th>';}).join("")+'<th class="num">Total docente</th></tr></thead><tbody>';
   docs.forEach(function(d){
     var mine=caDe("docente",d,vis),tot=suma(caDe("docente",d)),e=estadoCa(tot);
     h+='<tr><th scope="row">'+esc(d)+'</th>'+grupos.map(function(g){
@@ -823,7 +825,7 @@ function renderPer(){
       '<div class="row"><button class="btn small primary" type="submit">Guardar</button><button class="btn small" type="button" data-act="cancelPer">Cancelar</button>'+(c||'<button class="btn small danger" type="button" id="dr-'+id+'" data-act="ask" data-key="'+esc("per:"+o.id)+'">Eliminar</button>')+'</div></form>';
   }else $("per-edit").innerHTML="";
   if(!poa.periodicas.length){box.innerHTML=poaLoaded?'<p class="muted">Sin actividades periódicas.</p>':'';return;}
-  box.innerHTML='<div class="tbl-wrap"><table><thead><tr><th>Actividad</th><th>Periodicidad</th><th>Horario</th><th>Observación</th><th>Responsable</th><th>Seguimiento</th></tr></thead><tbody>'+
+  box.innerHTML='<div class="tbl-wrap" tabindex="0" role="region" aria-label="Actividades periódicas (desplazable)"><table><thead><tr><th>Actividad</th><th>Periodicidad</th><th>Horario</th><th>Observación</th><th>Responsable</th><th>Seguimiento</th></tr></thead><tbody>'+
     poa.periodicas.map(function(p){return '<tr data-act="editPer" data-id="'+esc(p.id)+'" tabindex="0" title="Clic para editar"><td>'+esc(p.actividad)+'</td><td>'+pd(p.periodicidad)+'</td><td>'+pd(p.horario)+'</td><td>'+(p.observacion?esc(p.observacion):'<span class="muted">—</span>')+'</td><td>'+pd(p.responsable)+'</td><td>'+(p.seguimiento?esc(p.seguimiento):'<span class="muted">—</span>')+'</td></tr>';}).join("")+
     '</tbody></table></div>';
 }
@@ -1037,7 +1039,7 @@ function renderWho(){
 function renderTablas(){
   $("tablas-body").innerHTML=tablas("proy").map(function(t){
     var last=t.texto?-1:t.cols.length-1;
-    return '<div><h3 style="margin-bottom:10px">'+esc(t.titulo)+'</h3><div class="tbl-wrap"><table><thead><tr>'+t.cols.map(function(c,i){return '<th'+(i===last?' class="num"':'')+'>'+esc(c)+'</th>';}).join("")+'</tr></thead><tbody>'+
+    return '<div><h3 style="margin-bottom:10px">'+esc(t.titulo)+'</h3><div class="tbl-wrap" tabindex="0" role="region" aria-label="'+esc(t.titulo)+' (desplazable)"><table><thead><tr>'+t.cols.map(function(c,i){return '<th'+(i===last?' class="num"':'')+'>'+esc(c)+'</th>';}).join("")+'</tr></thead><tbody>'+
       (t.filas.length?t.filas.map(function(f){return '<tr>'+f.map(function(c,i){return '<td'+(i===last?' class="num"':'')+'>'+esc(c)+'</td>';}).join("")+'</tr>';}).join(""):'<tr><td colspan="'+t.cols.length+'" class="muted">'+(t.texto?"Sin actividades todavía.":"Sin proyectos todavía.")+'</td></tr>')+'</tbody></table></div></div>';
   }).join("");
 }
@@ -1177,6 +1179,14 @@ document.addEventListener("focusout",function(){
   setTimeout(function(){if(pendingRemote&&!dirty&&!saving){var n=pendingRemote;pendingRemote=null;adoptar(n);}else{pendingRemote=null;}},0);
 });
 
+/* Flechas, Inicio y Fin en la barra de pestañas: reutiliza el clic existente (data-act="tab" → setTab) */
+document.addEventListener("keydown",function(ev){
+  var cur=ev.target.closest&&ev.target.closest('.tabs [role="tab"]');if(!cur)return;
+  var k=ev.key;if(k!=="ArrowLeft"&&k!=="ArrowRight"&&k!=="Home"&&k!=="End")return;
+  var all=[].slice.call(document.querySelectorAll('.tabs [role="tab"]')),i=all.indexOf(cur);if(i<0)return;
+  var n=k==="Home"?0:k==="End"?all.length-1:(i+(k==="ArrowRight"?1:-1)+all.length)%all.length;
+  ev.preventDefault();all[n].click();all[n].focus();
+});
 document.addEventListener("keydown",function(ev){
   if(ev.key==="Enter"&&ev.target.matches&&ev.target.matches('tr[data-act="editPer"]')){ev.target.click();return;}
   if(ev.key!=="Escape")return;
