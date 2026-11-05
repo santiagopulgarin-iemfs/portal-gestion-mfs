@@ -1,109 +1,103 @@
 /* Pantallas previas al portal (acceso, no autorizado, carga).
-   Look institucional claro y fijo: no depende de data-tema, para que la puerta de entrada se vea igual
-   en cualquier equipo. Tokens propios (prefijo --g-) derivados de la paleta del escudo en portal.css. */
+   Mismo lenguaje que el portal: papel crema, tarjeta blanca plana con filete verde, títulos en Source Serif 4, cabecera verde con
+   filete dorado. Los tokens --g-* son alias de los tokens de portal.css (única fuente de verdad); esta pantalla no depende de data-tema. */
 .gate-page{
-  --g-paper:#f6f4ee; --g-card:#ffffff; --g-ink:#16202a; --g-ink-2:#34404c; --g-muted:#566370;
-  --g-line:#ddd9cd; --g-verde:#395723; --g-verde-2:#4c7a2e; --g-azul:#2a6aa6; --g-azul-2:#2e75b5;
-  --g-oro:#d9a441; --g-oro-ink:#7a4d00; --g-err:#a8321f; --g-err-bg:#fcefed;
-  --g-display:"Source Serif 4",Georgia,"Times New Roman",serif; --g-body:"Public Sans","Segoe UI",Tahoma,sans-serif;
+  --g-paper:var(--bg); --g-card:var(--surface); --g-ink:var(--ink); --g-ink-2:var(--ink-2); --g-muted:var(--muted);
+  --g-line:var(--line-strong); --g-verde:var(--verde); --g-verde-2:var(--verde-hondo); --g-azul:var(--azul);
+  --g-oro:var(--oro); --g-oro-ink:var(--oro-ink); --g-err:var(--out); --g-err-bg:var(--out-bg);
+  --g-display:var(--display); --g-body:var(--body);
   position:relative;isolation:isolate;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;
-  background:var(--g-paper);color:var(--g-ink);font-family:var(--g-body);font-size:16px;line-height:1.55;
+  background:var(--g-paper);color:var(--g-ink);font-family:var(--g-body);font-size:1rem;line-height:1.55;
   color-scheme:light;-webkit-font-smoothing:antialiased;
 }
-body:has(.gate-page){margin:0;background:#f6f4ee}
+body:has(.gate-page){margin:0;background:var(--bg)}
 .gate-page *,.gate-page *::before,.gate-page *::after{box-sizing:border-box}
-/* Trama sutil: cuadrícula de papel milimetrado, apenas visible. */
-.gate-page::before{
-  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background-image:linear-gradient(rgba(57,87,35,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(57,87,35,.045) 1px,transparent 1px);
-  background-size:32px 32px;
-  -webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%);
-}
 
-/* Franja institucional 62/38 verde-azul, igual que el encabezado del portal, con filete dorado. */
-.gate-band{height:8px;background:linear-gradient(90deg,var(--g-verde-2) 0 62%,var(--g-azul-2) 62% 100%);position:relative}
-.gate-band::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;background:var(--g-oro)}
+/* Franja superior: verde hondo con filete dorado, igual que la cabecera del portal. */
+.gate-band{height:12px;background:var(--verde-hondo);border-bottom:3px solid var(--oro)}
 
 .gate-main{
   flex:1;width:100%;max-width:1080px;margin:0 auto;display:grid;align-items:center;
-  gap:clamp(20px,4vw,56px);padding:clamp(28px,6vw,64px) clamp(16px,4vw,40px);
+  gap:clamp(20px,4vw,56px);padding:clamp(28px,6vw,64px) max(clamp(16px,4vw,40px),env(safe-area-inset-left,0px));
   grid-template-columns:minmax(0,1fr);
 }
 @media (min-width:860px){.gate-main{grid-template-columns:minmax(0,1fr) minmax(0,440px)}}
 
 /* Identidad */
-.gate-id{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:8px 0}
-.gate-rings{position:absolute;z-index:-1;top:50%;left:50%;width:min(420px,92%);height:auto;transform:translate(-50%,-50%);color:var(--g-verde-2);opacity:.22;pointer-events:none}
-.gate-crest{display:block;margin-bottom:20px;filter:drop-shadow(0 10px 18px rgba(30,50,20,.18))}
+.gate-id{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--s-2) 0}
+.gate-rings{position:absolute;z-index:-1;top:50%;left:50%;width:min(420px,92%);height:auto;transform:translate(-50%,-50%);color:var(--verde);opacity:.14;pointer-events:none}
+.gate-crest{display:block;margin-bottom:var(--s-5)}
 .gate-crest img{display:block}
-.gate-inst{margin:0;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--g-muted);font-weight:600;display:flex;flex-direction:column;gap:4px}
-.gate-inst strong{font-family:var(--g-display);font-size:clamp(1.6rem,3.4vw,2.25rem);letter-spacing:-.015em;text-transform:none;color:var(--g-verde);font-weight:800;line-height:1.1}
-.gate-place{margin:12px 0 0;display:inline-flex;align-items:center;gap:10px;font-size:.9rem;font-weight:600;color:var(--g-ink-2)}
+.gate-inst{margin:0;font-size:var(--fs-sm);letter-spacing:.1em;text-transform:uppercase;color:var(--g-muted);font-weight:600;display:flex;flex-direction:column;gap:var(--s-1)}
+.gate-inst strong{font-family:var(--g-display);font-size:clamp(1.7rem,3.4vw,2.4rem);letter-spacing:-.01em;text-transform:none;color:var(--g-verde);font-weight:700;line-height:1.1}
+.gate-place{margin:var(--s-3) 0 0;display:inline-flex;align-items:center;gap:10px;font-size:var(--fs-md);font-weight:600;color:var(--g-ink-2)}
 .gate-place::before,.gate-place::after{content:"";width:22px;height:2px;background:var(--g-oro)}
 
 /* Tarjeta de acción */
 .gate-card{
-  position:relative;background:var(--g-card);border:1px solid var(--g-line);border-radius:10px;
-  padding:clamp(24px,4vw,40px) clamp(20px,4vw,36px) clamp(24px,4vw,36px);
-  box-shadow:0 1px 2px rgba(22,32,42,.06),0 18px 40px -18px rgba(22,32,42,.22);
-  display:flex;flex-direction:column;align-items:stretch;gap:0;overflow:hidden;
+  position:relative;background:var(--g-card);border:1px solid var(--g-line);border-radius:var(--r);
+  padding:clamp(24px,4vw,40px) clamp(20px,4vw,36px) clamp(24px,4vw,36px) clamp(24px,4vw,40px);
+  box-shadow:var(--sh-pop);display:flex;flex-direction:column;align-items:stretch;gap:0;overflow:hidden;
 }
-.gate-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--g-verde-2) 0 62%,var(--g-azul-2) 62% 100%)}
-.gate-eyebrow{margin:0 0 8px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--g-oro-ink)}
-.gate-title{margin:0;font-family:var(--g-display);font-weight:800;font-size:clamp(1.7rem,4vw,2.2rem);line-height:1.1;letter-spacing:-.02em;color:var(--g-ink);text-wrap:balance}
-.gate-lead{margin:14px 0 0;color:var(--g-ink-2);text-wrap:pretty}
-.gate-lead code{font-family:"IBM Plex Mono",Consolas,monospace;font-size:.85em;background:#eef1ec;padding:1px 5px;border-radius:4px}
+.gate-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--g-verde)}
+.gate-eyebrow{margin:0 0 var(--s-2);font-size:var(--fs-xs);letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--g-oro-ink)}
+.gate-title{margin:0;font-family:var(--g-display);font-weight:700;font-size:clamp(1.7rem,4vw,2.2rem);line-height:1.1;letter-spacing:-.01em;color:var(--g-ink);text-wrap:balance}
+.gate-lead{margin:var(--s-4) 0 0;color:var(--g-ink-2);text-wrap:pretty}
+.gate-lead code{font-family:var(--g-body);font-weight:600;font-size:.85em;background:var(--sunk-2);padding:1px 5px;border-radius:var(--r-xs)}
 .gate-email{overflow-wrap:anywhere;color:var(--g-ink)}
-.gate-card > .g-btn,.gate-card > .gate-btn{margin-top:26px}
-.gate-note{margin:18px 0 0;padding-top:16px;border-top:1px solid var(--g-line);font-size:.875rem;color:var(--g-muted);text-wrap:pretty}
-.gate-note--first{margin-top:18px}
+.gate-card > .g-btn,.gate-card > .gate-btn{margin-top:var(--s-5)}
+.gate-note{margin:var(--s-4) 0 0;padding-top:var(--s-4);border-top:1px solid var(--line);font-size:var(--fs-sm);color:var(--g-muted);text-wrap:pretty}
+.gate-note--first{margin-top:var(--s-4)}
 
-.gate-alert{display:flex;gap:10px;align-items:flex-start;margin:20px 0 0;padding:12px 14px;border:1px solid #e4b3aa;background:var(--g-err-bg);color:var(--g-err);border-radius:6px;font-size:.9rem;font-weight:500}
+.gate-alert{display:flex;gap:10px;align-items:flex-start;margin:var(--s-5) 0 0;padding:var(--s-3) 14px;border:1px solid color-mix(in srgb,var(--g-err) 40%,var(--line));border-left:4px solid var(--g-err);background:var(--g-err-bg);color:var(--g-err);border-radius:var(--r-sm);font-size:var(--fs-md);font-weight:500}
 .gate-alert svg{flex:none;margin-top:2px}
 
-/* Botón Google: fondo blanco, borde gris, "G" oficial, etiqueta clara (guía de marca de Google). */
+/* Botón Google: guía de marca (fondo blanco, borde gris, "G" oficial, etiqueta clara). Los colores de la "G" y del botón son de Google. */
 .g-btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:48px;padding:0 16px;
-  background:#fff;color:#1f1f1f;border:1px solid #747775;border-radius:999px;
-  font:600 .95rem/1 var(--g-body);cursor:pointer;transition:background .15s,box-shadow .15s,border-color .15s;
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:48px;padding:0 var(--s-4);
+  background:#fff;color:#1f1f1f;border:1px solid #747775;border-radius:var(--r);
+  font:600 var(--fs-md)/1 var(--g-body);cursor:pointer;transition:background-color var(--dur-1) ease,border-color var(--dur-1) ease,transform var(--dur-1) var(--ease);
 }
-.g-btn:hover:not(:disabled){background:#f3f6fc;border-color:#1f1f1f;box-shadow:0 1px 3px rgba(60,64,67,.3)}
-.g-btn:active:not(:disabled){background:#e8eefb}
+.g-btn:active:not(:disabled){background:#e8eefb;transform:scale(.99)}
 .g-btn:disabled{cursor:progress;opacity:.75}
 .g-btn__mark{flex:none}
 
 .gate-btn{
-  display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:6px;
-  background:var(--g-verde);color:#fff;border:1px solid var(--g-verde);font:700 .95rem/1 var(--g-body);cursor:pointer;
-  transition:background .15s;
+  display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 var(--s-5);border-radius:var(--r-sm);
+  background:var(--g-verde);color:var(--on-verde);border:1px solid var(--g-verde);font:700 var(--fs-md)/1 var(--g-body);cursor:pointer;
+  transition:background-color var(--dur-1) ease,transform var(--dur-1) var(--ease);
 }
-.gate-btn:hover{background:#2a411a}
+.gate-btn:active{transform:scale(.98)}
 
-.gate-page :focus-visible{outline:3px solid var(--g-azul);outline-offset:3px}
-.g-btn:focus-visible{outline-color:var(--g-azul)}
+.gate-page :focus-visible{outline:3px solid var(--focus);outline-offset:3px}
 
-.gate-spinner{display:block;width:28px;height:28px;margin-top:20px;border:3px solid var(--g-line);border-top-color:var(--g-verde-2);border-radius:50%;animation:gate-spin .9s linear infinite}
+.gate-spinner{display:block;width:28px;height:28px;margin-top:var(--s-5);border:3px solid var(--g-line);border-top-color:var(--g-verde);border-radius:var(--r-round);animation:gate-spin .9s linear infinite}
 @keyframes gate-spin{to{transform:rotate(360deg)}}
 
 /* Pie */
-.gate-foot{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 20px;padding:18px 16px 22px;border-top:1px solid var(--g-line);background:rgba(255,255,255,.55);font-size:.8rem;color:var(--g-muted)}
+.gate-foot{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--s-1) var(--s-5);padding:var(--s-4) var(--s-4) max(22px,env(safe-area-inset-bottom,0px));border-top:1px solid var(--line-strong);background:var(--surface);font-size:var(--fs-sm);color:var(--g-muted)}
 
 /* Compacto (no autorizado / carga): crest más pequeño */
-.is-compact .gate-crest{margin-bottom:14px}
+.is-compact .gate-crest{margin-bottom:var(--s-4)}
 
-/* Entrada orquestada: identidad y tarjeta aparecen escalonadas */
-@media (prefers-reduced-motion:no-preference){
-  .gate-id,.gate-card{animation:gate-in .6s cubic-bezier(.2,.7,.2,1) both}
-  .gate-card{animation-delay:.12s}
-  .g-btn,.gate-btn{transition-duration:.2s}
+@media (hover:hover) and (pointer:fine){
+  .g-btn:hover:not(:disabled){background:#f3f6fc;border-color:#1f1f1f}
+  .gate-btn:hover{background:var(--verde-hondo)}
 }
-@keyframes gate-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* Entrada: identidad y tarjeta aparecen una sola vez, escalonadas (pantalla que se ve una vez por sesión) */
+@keyframes gate-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .gate-id,.gate-card{animation:gate-in var(--dur-3) var(--ease) both}
+  .gate-card{animation-delay:80ms}
+}
 @media (prefers-reduced-motion:reduce){.gate-spinner{animation-duration:2.4s}}
 
 @media (max-width:859px){
   .gate-id{padding-bottom:0}
-  .gate-crest img{width:128px!important;height:128px!important}
-  .gate-card::before{width:100%;height:5px;bottom:auto;background:linear-gradient(90deg,var(--g-verde-2) 0 62%,var(--g-azul-2) 62% 100%)}
-  .gate-card{padding-top:30px}
+  .gate-crest img{width:112px!important;height:112px!important}
+  .gate-card::before{width:100%;height:5px;bottom:auto}
+  .gate-card{padding-top:30px;padding-left:clamp(20px,4vw,36px)}
 }
+@media (pointer:coarse){.g-btn,.gate-btn{min-height:var(--tap)}}
 @media (max-width:380px){.gate-inst strong{font-size:1.45rem}.gate-main{padding-inline:12px}}
