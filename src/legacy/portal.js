@@ -858,7 +858,7 @@ function initPoa(){var v=null;try{v=localStorage.getItem(POAM_LS);}catch(e){}if(
 function setTema(t,save){
   var claro=t==="claro";
   if(claro)document.documentElement.setAttribute("data-tema","claro");else document.documentElement.removeAttribute("data-tema");
-  $("btn-tema").textContent=claro?"Modo oscuro":"Modo claro";
+  var bt=$("btn-tema");if(bt)bt.textContent=claro?"Modo oscuro":"Modo claro";
   if(save){try{localStorage.setItem(TEMA_LS,claro?"claro":"oscuro");}catch(e){}}
 }
 function initTema(){var t=null;try{t=localStorage.getItem(TEMA_LS);}catch(e){}setTema(t,false);}

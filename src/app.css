@@ -1,7 +1,8 @@
-.gate{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;text-align:center;font-family:"Public Sans",system-ui,sans-serif}
-.gate h1{font-family:Manrope,system-ui,sans-serif;font-size:22px;margin:0}
-.gate-body{max-width:420px;display:flex;flex-direction:column;gap:14px;align-items:center;line-height:1.5}
-.gate .btn{padding:10px 18px;border-radius:8px;border:1px solid #2f6b4f;background:#2f6b4f;color:#fff;font:600 14px "Public Sans",system-ui,sans-serif;cursor:pointer}
-.gate .err{color:#b3261e;margin:0}
-.session-bar{position:fixed;right:12px;bottom:12px;z-index:50;display:flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(20,20,19,.85);color:#fff;font:12px "Public Sans",system-ui,sans-serif}
-.session-bar button{background:transparent;border:1px solid #fff6;color:#fff;border-radius:999px;padding:2px 10px;cursor:pointer;font:inherit}
+/* Barra de sesión del portal: flota abajo a la derecha, mismo lenguaje que el resto (papel, filete, verde). */
+.session-bar{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:50;display:flex;gap:var(--s-2);align-items:center;max-width:calc(100vw - 24px);padding:4px 4px 4px var(--s-4);border-radius:var(--r-pill);background:var(--surface);color:var(--ink-2);border:1px solid var(--line-strong);box-shadow:var(--sh-pop);font:500 var(--fs-xs)/1.2 var(--body)}
+.session-bar span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.session-bar button{flex:none;background:var(--verde);border:1px solid var(--verde);color:var(--on-verde);border-radius:var(--r-pill);padding:6px var(--s-4);min-height:32px;font:600 var(--fs-xs)/1 var(--body);transition:background-color var(--dur-1) ease,transform var(--dur-1) var(--ease)}
+.session-bar button:active{transform:scale(.97)}
+.session-bar button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+@media (hover:hover) and (pointer:fine){.session-bar button:hover{background:var(--verde-hondo)}}
+@media (pointer:coarse){.session-bar button{min-height:var(--tap);padding-inline:var(--s-5)}}

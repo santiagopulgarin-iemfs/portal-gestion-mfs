@@ -1,26 +1,31 @@
   <header class="top">
-    <div class="brand">
-      <img class="logo" src="/escudo.jpg" alt="Escudo de la I.E. Marco Fidel Suárez" width="96" height="96">
-      <div>
-      <div class="eyebrow">Andes · Antioquia · Coordinación y Rectoría Académica</div>
-      <h1 id="titulo">Portal de Gestión I.E. Marco Fidel Suárez</h1>
+    <div class="top-in">
+      <div class="brand">
+        <img class="logo" src="/escudo.jpg" alt="Escudo de la I.E. Marco Fidel Suárez" width="96" height="96">
+        <div class="brand-txt">
+          <div class="eyebrow">Andes · Antioquia · Coordinación y Rectoría Académica</div>
+          <h1 id="titulo">Portal de Gestión I.E. Marco Fidel Suárez</h1>
+        </div>
       </div>
-    </div>
-    <div class="top-actions">
-      <span class="status" id="estado" data-s="wait" role="status">Conectando…</span>
-      <button class="btn" id="btn-tema" data-act="tema">Modo claro</button>
-      <button class="btn" id="btn-copiar" data-act="copy">Copiar tablas</button>
-      <button class="btn primary" id="btn-word" data-act="word">Descargar Word</button>
+      <div class="top-actions">
+        <span class="status" id="estado" data-s="wait" role="status">Conectando…</span>
+        <button class="btn" id="btn-copiar" data-act="copy">Copiar tablas</button>
+        <button class="btn primary" id="btn-word" data-act="word">Descargar Word</button>
+      </div>
     </div>
   </header>
 
-  <div class="tabs" role="tablist" aria-label="Vistas">
-    <button class="tab" role="tab" id="tab-proy" data-act="tab" data-tab="proy" aria-selected="true" aria-controls="view-proy">Proyectos <span class="n" id="tab-proy-n"></span></button>
-    <button class="tab" role="tab" id="tab-act" data-act="tab" data-tab="act" aria-selected="false" aria-controls="view-act">Actividades <span class="n" id="tab-act-n"></span></button>
-    <button class="tab" role="tab" id="tab-dg" data-act="tab" data-tab="dg" aria-selected="false" aria-controls="view-dg">Direcciones de grupo <span id="tab-dg-anio"></span> <span class="n" id="tab-dg-n"></span></button>
-    <button class="tab" role="tab" id="tab-ca" data-act="tab" data-tab="ca" aria-selected="false" aria-controls="view-ca">Cargas académicas <span class="n" id="tab-ca-n"></span></button>
-    <button class="tab" role="tab" id="tab-poa" data-act="tab" data-tab="poa" aria-selected="false" aria-controls="view-poa">Plan operativo (POA) <span class="n" id="tab-poa-n"></span></button>
+  <div class="tabbar">
+    <div class="tabs" role="tablist" aria-label="Vistas">
+      <button class="tab" role="tab" id="tab-proy" data-act="tab" data-tab="proy" aria-selected="true" aria-controls="view-proy">Proyectos <span class="n" id="tab-proy-n"></span></button>
+      <button class="tab" role="tab" id="tab-act" data-act="tab" data-tab="act" aria-selected="false" aria-controls="view-act">Actividades <span class="n" id="tab-act-n"></span></button>
+      <button class="tab" role="tab" id="tab-dg" data-act="tab" data-tab="dg" aria-selected="false" aria-controls="view-dg">Direcciones de grupo <span id="tab-dg-anio"></span> <span class="n" id="tab-dg-n"></span></button>
+      <button class="tab" role="tab" id="tab-ca" data-act="tab" data-tab="ca" aria-selected="false" aria-controls="view-ca">Cargas académicas <span class="n" id="tab-ca-n"></span></button>
+      <button class="tab" role="tab" id="tab-poa" data-act="tab" data-tab="poa" aria-selected="false" aria-controls="view-poa">Plan operativo (POA) <span class="n" id="tab-poa-n"></span></button>
+    </div>
   </div>
+
+  <main class="wrap">
 
   <div id="mensajes"></div>
 
@@ -200,4 +205,4 @@
       <div id="per-list"></div>
     </section>
   </div>
-</div>
+</main>
