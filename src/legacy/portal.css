@@ -281,6 +281,8 @@ tbody tr:hover td.mxc{background:color-mix(in srgb,var(--azul) calc(var(--h,0) *
 .dg-tools .field{flex:1 1 260px;max-width:520px;min-width:0}
 .dg-tools .field.anio{flex:0 1 120px}
 .dg-tools input{width:100%;min-width:0}
+.dg-confirm{border-color:var(--accent)}
+.dg-aviso.err{border-color:var(--danger,#c0392b)}
 .dg-new{display:grid;grid-template-columns:minmax(0,.5fr) minmax(0,1.6fr) minmax(0,.8fr) minmax(0,.8fr) auto;gap:10px 14px;align-items:end}
 .dg-new input,.dg-new select{width:100%;min-width:0}
 #dg-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px}

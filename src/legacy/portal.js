@@ -53,6 +53,7 @@ function setStatus(){
   else if(dirty||saving||actDirty||actSaving||dgDirty||dgSaving||caDirty||caSaving||poaDirty||poaSaving){t="Guardando…";s="saving";}
   else{t="Guardado";s="ok";}
   el.textContent=t; el.dataset.s=s;
+  dgPermisos();
 }
 function lsWrite(){try{localStorage.setItem(LS_KEY,JSON.stringify(state));}catch(e){}}
 function lsRead(){try{var r=localStorage.getItem(LS_KEY);return r?normalizar(JSON.parse(r)):null;}catch(e){return null;}}
@@ -416,12 +417,13 @@ function renderDg(){
   $("dg-titulo").textContent=("Direcciones de grupo "+dg.anio).trim();
   $("tab-dg-n").textContent=n?String(n):"";
   $("dg-resumen").textContent=!dg.items.length?"":n+(n===1?" grupo":" grupos")+" · "+tar+" en la tarde · "+man+" en la mañana"+(sin?" · "+sin+" sin jornada":"")+(libres?" · "+libres+(libres===1?" docente":" docentes")+" sin dirección de grupo":"");
-  var an=$("dg-anio");if(an&&an!==document.activeElement)an.value=dg.anio;
+  var an=$("dg-anio");if(an&&an!==document.activeElement&&dgAnioNuevo===null)an.value=dg.anio;
+  dgPermisos();
   var q=plano(ui.dgFilter||"").trim();
   var vis=q?orden.filter(function(a){return plano((a.grupo||"sin dirección de grupo")+" "+a.docente+" "+a.jornada+" "+a.sede).indexOf(q)>=0;}):orden;
   var h;
   if(!dgLoaded)h='<p class="muted">Cargando direcciones de grupo…</p>';
-  else if(!dg.items.length)h='<div class="empty"><h3>Todavía no hay direcciones de grupo</h3><p style="margin:0;max-width:65ch">Abrí «Agregar docente» y cargá la primera: grupo, docente, jornada y sede.</p></div>';
+  else if(!dg.items.length)h='<div class="empty"><h3>Todavía no hay direcciones de grupo</h3><p style="margin:0;max-width:65ch">Abrí «Agregar grupo o docente» y cargá la primera: grupo, docente, jornada y sede.</p></div>';
   else if(!vis.length)h='<p class="muted">Ningún grupo coincide con «'+esc((ui.dgFilter||"").trim())+'».</p>';
   else{
     var v1=vis.filter(function(a){return a.grupo;}),v2=vis.filter(function(a){return !a.grupo;});
@@ -434,17 +436,55 @@ function renderDg(){
 function guardarDg(f){
   var val=function(k){var i=f.querySelector('[data-k="'+k+'"]');return i?i.value.trim():"";};
   var gr=val("grupo").replace(/\s+/g,"").toUpperCase(),doc=val("docente");
-  if(!doc){ui.msg="Poné el nombre del docente.";renderTop();return;}
+  var esNuevo=f.dataset.form==="newDg",selfId=esNuevo?null:f.dataset.id;
+  if(esNuevo&&mode==="readonly"){dgAviso("Tu cuenta es de solo lectura: no puedes agregar grupos.","err");return;}
+  if(!doc){dgAviso("Escribe el nombre del docente.","err");return;}
   baseDg();
-  if(f.dataset.form==="editDg"){
+  var sede=val("sede"),dup=gr?dg.items.find(function(a){return a.id!==selfId&&a.grupo&&plano(a.grupo)===plano(gr)&&plano(a.sede)===plano(sede);}):null;
+  if(dup){dgAviso("Ya existe el grupo "+gr+(sede?" en la sede "+sede:"")+" (docente: "+(dup.docente||"sin nombre")+"). Edita ese registro o usa otro código.","err");return;}
+  if(!esNuevo){
     var id=f.dataset.id,o=dg.items.find(function(a){return a.id===id;});
-    if(o){o.grupo=gr;o.docente=doc;o.jornada=val("jornada");o.sede=val("sede");}
+    if(o){o.grupo=gr;o.docente=doc;o.jornada=val("jornada");o.sede=sede;}
     ui.editDg=null;ui.dgFocus="eg-"+id;
   }else{
-    dg.items.push({id:uid("g"),sede:val("sede"),grupo:gr,docente:doc,jornada:val("jornada")});
-    f.reset();
+    dg.items.push({id:uid("g"),sede:sede,grupo:gr,docente:doc,jornada:val("jornada")});
+    f.reset();ui.dgFocus="nd-grupo";
+    dgAviso(gr?"Grupo "+gr+" agregado con "+doc+".":doc+" agregado sin dirección de grupo.","ok");
   }
   commitDg();
+}
+/* ---- aviso en la página y cambio de año con confirmación (sin window.confirm) ---- */
+var dgAvisoT=null,dgAnioNuevo=null;
+function dgAviso(t,tipo){
+  var el=$("dg-aviso");if(!el)return;
+  clearTimeout(dgAvisoT);
+  el.textContent=t;el.className="msg dg-aviso"+(tipo==="err"?" err":"");el.setAttribute("role",tipo==="err"?"alert":"status");el.hidden=false;
+  if(tipo!=="err")dgAvisoT=setTimeout(function(){el.hidden=true;},6000);
+}
+function dgPermisos(){
+  var ro=mode==="readonly",n=$("dg-nueva"),a=$("dg-anio"),b=$("dg-anio-btn");
+  if(n)n.hidden=ro;if(b)b.hidden=ro;if(a)a.disabled=ro;
+}
+function dgAnioPedir(){
+  var inp=$("dg-anio");if(!inp||mode==="readonly")return;
+  var to=inp.value.trim(),from=dg.anio;
+  if(!/^\d{4}$/.test(to)||+to<2000||+to>2100){dgAviso("Escribe un año válido de cuatro cifras, por ejemplo 2027.","err");return;}
+  if(to===from){dgAviso("Las direcciones de grupo ya están en el año "+from+".","err");return;}
+  dgAnioNuevo=to;
+  var n=dg.items.length;
+  $("dg-anio-confirm-d").textContent="Año actual: "+(from||"(sin año)")+". Año nuevo: "+to+". Se conservarán los "+n+(n===1?" registro":" registros")+" de direcciones de grupo tal como están; no se borra nada. Solo cambia el año que aparece en los títulos, en las tablas copiadas y en el Word. Después podrás editar los grupos o agregar nuevos para "+to+".";
+  $("dg-aviso").hidden=true;$("dg-anio-confirm").hidden=false;
+  $("dg-anio-ok").focus();
+}
+function dgAnioCerrar(devolverFoco){
+  dgAnioNuevo=null;$("dg-anio-confirm").hidden=true;
+  var inp=$("dg-anio");if(inp)inp.value=dg.anio;
+  if(devolverFoco){var b=$("dg-anio-btn");if(b&&!b.hidden)b.focus();}
+}
+function dgAnioAplicar(){
+  var to=dgAnioNuevo;if(!to||mode==="readonly"){dgAnioCerrar(true);return;}
+  baseDg();dg.anio=to;commitDg();
+  dgAnioCerrar(true);dgAviso("Año actualizado a "+to+".","ok");
 }
 
 /* ---------- Cargas académicas (doc aparte: tablero/cargas) ---------- */
@@ -1056,6 +1096,9 @@ document.addEventListener("click",function(ev){
     case "sel":ui.sel=ui.sel===did?null:did;ui.focus="per-"+did;render();return;
     case "ask":ui.confirm=b.dataset.key;render();if(!ui.editAct)renderActs();if(!ui.editDg)renderDg();renderCa();renderPoa();return;
     case "cancel":ui.confirm=null;render();if(!ui.editAct)renderActs();if(!ui.editDg)renderDg();renderCa();renderPoa();return;
+    case "dgAnio":dgAnioPedir();return;
+    case "dgAnioOk":dgAnioAplicar();return;
+    case "dgAnioNo":dgAnioCerrar(true);return;
     case "dismiss":ui.msg=null;ui.copyText=null;render();return;
     case "keep":state.esEjemplo=false;commit();return;
     case "word":descargarWord();return;
@@ -1121,8 +1164,17 @@ document.addEventListener("keydown",function(ev){
   var f=ev.target.closest&&ev.target.closest('[data-form="renameProj"]');if(!f)return;
   ui.editProj=null;ui.focus="rnb-"+f.dataset.pid;render();
 });
-document.addEventListener("change",function(ev){
-  if(ev.target.id==="dg-anio"){var v=ev.target.value.trim();if(v!==dg.anio){baseDg();dg.anio=v;commitDg();}}
+document.addEventListener("keydown",function(ev){
+  if(ev.target.id==="dg-anio"&&ev.key==="Enter"){ev.preventDefault();dgAnioPedir();return;}
+  var pc=$("dg-anio-confirm");if(!pc||pc.hidden)return;
+  if(ev.key==="Escape"){ev.preventDefault();dgAnioCerrar(true);return;}
+  if(ev.key==="Tab"){
+    /* foco atrapado entre Confirmar y Cancelar mientras el diálogo está abierto */
+    var ok=$("dg-anio-ok"),no=$("dg-anio-no"),a=document.activeElement;
+    if(ev.shiftKey&&a===ok){ev.preventDefault();no.focus();}
+    else if(!ev.shiftKey&&a===no){ev.preventDefault();ok.focus();}
+    else if(a!==ok&&a!==no){ev.preventDefault();ok.focus();}
+  }
 });
 document.addEventListener("input",function(ev){
   if(ev.target.id==="p-filtro"){ui.pFilter=ev.target.value;renderBoard();}

@@ -104,10 +104,17 @@
       <div class="sec-head"><h2 id="dg-titulo">Direcciones de grupo</h2><span class="muted" id="dg-resumen"></span></div>
       <div class="dg-tools">
         <div class="field"><label for="dg-filtro">Buscar por grupo, docente o jornada</label><input type="text" id="dg-filtro" placeholder="Ej.: 9B, Leonora, mañana" autocomplete="off"></div>
-        <div class="field anio"><label for="dg-anio">Año</label><input type="text" id="dg-anio" inputmode="numeric" autocomplete="off"></div>
+        <div class="field anio"><label for="dg-anio">Año</label><input type="text" id="dg-anio" inputmode="numeric" maxlength="4" autocomplete="off"></div>
+        <button class="btn" type="button" id="dg-anio-btn" data-act="dgAnio">Cambiar año</button>
       </div>
+      <div class="panel dg-confirm" id="dg-anio-confirm" role="alertdialog" aria-labelledby="dg-anio-confirm-t" aria-describedby="dg-anio-confirm-d" hidden>
+        <h3 id="dg-anio-confirm-t">¿Cambiar el año de las direcciones de grupo?</h3>
+        <p id="dg-anio-confirm-d" style="margin:0"></p>
+        <div class="row"><button class="btn primary" type="button" id="dg-anio-ok" data-act="dgAnioOk">Confirmar</button><button class="btn" type="button" id="dg-anio-no" data-act="dgAnioNo">Cancelar</button></div>
+      </div>
+      <div class="msg dg-aviso" id="dg-aviso" role="status" aria-live="polite" hidden></div>
       <details class="panel" id="dg-nueva">
-        <summary>Agregar docente</summary>
+        <summary>Agregar grupo o docente</summary>
         <form class="dg-new" data-form="newDg" id="dg-form">
           <div class="field"><label for="nd-grupo">Grupo (vacío si no dirige)</label><input type="text" id="nd-grupo" data-k="grupo" placeholder="Ej.: 11B"></div>
           <div class="field"><label for="nd-doc">Docente</label><input type="text" id="nd-doc" data-k="docente" required placeholder="Nombre del director de grupo"></div>
