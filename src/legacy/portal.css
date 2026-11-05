@@ -395,7 +395,20 @@ table.mx{min-width:1180px}
 .dg-grupo{overflow-wrap:anywhere;font-size:var(--fs-lg);line-height:1.1;padding-inline:var(--s-1);min-width:0}
 .mxl{overflow-wrap:break-word;hyphens:auto}
 .top h1,.brand-txt{overflow-wrap:anywhere}
-.status{max-width:100%}
+.status{max-width:100%;overflow-wrap:anywhere}
+/* Tablas: textos largos sin espacios (códigos, correos) se parten en vez de ensanchar la columna; cifras y cabeceras no */
+td{overflow-wrap:anywhere}
+td.num,.mxc,.mxt{overflow-wrap:normal}
+/* Cajas con scroll propio: no encadenan el scroll a la página; las de tabla tampoco disparan el gesto "atrás" */
+.list,.msg textarea{overscroll-behavior:contain}
+.tbl-wrap{overscroll-behavior-x:contain}
+.tbl-wrap:focus-visible{outline-offset:-2px}
+/* Cabecera bajo la muesca (valor 0 fuera de dispositivos con recorte) */
+.top{padding-top:env(safe-area-inset-top,0px)}
+/* Controles: la pulsación larga no selecciona su texto (el contenido sí sigue seleccionable) */
+.btn,.tab,.segb,.mesb,.chip-x,.session-bar button,details.panel summary{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+a,summary,label,[data-act],[role=tab]{touch-action:manipulation}
+html{overscroll-behavior-y:none}
 .tabs{scroll-snap-type:x proximity}
 .tab{scroll-snap-align:start}
 /* Foco visible donde el contenedor recorta el contorno */
@@ -446,6 +459,7 @@ details.panel[open] > :not(summary){animation:fade-in var(--dur-2) ease-out}
   input[type=text],input[type=date],input[type=number],select,textarea{font-size:1rem}
   .tab{min-height:52px}
   .nav{gap:0 var(--s-4)}
+  .nav a{display:inline-flex;align-items:center}
 }
 /* Teléfono */
 @media (max-width:560px){
