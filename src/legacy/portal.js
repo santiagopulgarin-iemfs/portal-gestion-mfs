@@ -360,7 +360,15 @@ function normDg(d){
     return {id:String(a.id),sede:String(a.sede||""),grupo:String(a.grupo||""),docente:String(a.docente||""),jornada:String(a.jornada||"")};
   })};
 }
-function dgOrden(){return dg.items.slice().sort(function(a,b){return cmp(a.grupo,b.grupo)||cmp(a.docente,b.docente);});}
+/* Clave de persona: sin tildes/mayúsculas/espacios sobrantes y sin importar el orden de las palabras */
+function dgClave(n){return plano(n||"").replace(/[^a-z0-9ñ\s]/g," ").split(/\s+/).filter(Boolean).sort().join(" ");}
+/* Un docente con grupo asignado no cuenta como «sin dirección», aunque quede una fila suelta sin grupo */
+function dgVisibles(){
+  var conGrupo={};
+  dg.items.forEach(function(a){if(a.grupo)conGrupo[dgClave(a.docente)]=true;});
+  return dg.items.filter(function(a){return a.grupo||!conGrupo[dgClave(a.docente)];});
+}
+function dgOrden(){return dgVisibles().sort(function(a,b){return cmp(a.grupo,b.grupo)||cmp(a.docente,b.docente);});}
 function dgLsWrite(){try{localStorage.setItem(DG_LS,JSON.stringify(dg));}catch(e){}}
 function dgLsRead(){try{var r=localStorage.getItem(DG_LS);return r?normDg(JSON.parse(r)):null;}catch(e){return null;}}
 function baseDg(){if(dgPending){dg=dgPending;dgPending=null;}}
@@ -412,7 +420,7 @@ function dgRow(a){
 }
 function renderDg(){
   var list=$("dg-list");if(!list)return;
-  var orden=dgOrden(),con=dg.items.filter(function(a){return a.grupo;}),n=con.length,libres=dg.items.length-n,man=0,tar=0,sin=0;
+  var orden=dgOrden(),con=orden.filter(function(a){return a.grupo;}),n=con.length,libres=orden.length-n,man=0,tar=0,sin=0;
   con.forEach(function(a){var j=plano(a.jornada);if(j.indexOf("man")===0)man++;else if(j.indexOf("tar")===0)tar++;else if(!j)sin++;});
   $("dg-titulo").textContent=("Direcciones de grupo "+dg.anio).trim();
   $("tab-dg-n").textContent=n?String(n):"";
@@ -442,11 +450,17 @@ function guardarDg(f){
   baseDg();
   var sede=val("sede"),dup=gr?dg.items.find(function(a){return a.id!==selfId&&a.grupo&&plano(a.grupo)===plano(gr)&&plano(a.sede)===plano(sede);}):null;
   if(dup){dgAviso("Ya existe el grupo "+gr+(sede?" en la sede "+sede:"")+" (docente: "+(dup.docente||"sin nombre")+"). Edita ese registro o usa otro código.","err");return;}
+  var kDoc=dgClave(doc);
+  if(esNuevo&&!gr&&dg.items.some(function(a){return a.grupo&&dgClave(a.docente)===kDoc;})){dgAviso(doc+" ya tiene dirección de grupo; no hace falta agregarlo sin grupo.","err");return;}
+  /* si ahora tiene grupo, se retira su fila antigua «sin grupo» para no duplicarlo */
+  var libre=function(a){return a.id!==selfId&&!a.grupo&&dgClave(a.docente)===kDoc;};
   if(!esNuevo){
     var id=f.dataset.id,o=dg.items.find(function(a){return a.id===id;});
     if(o){o.grupo=gr;o.docente=doc;o.jornada=val("jornada");o.sede=sede;}
+    if(gr)dg.items=dg.items.filter(function(a){return !libre(a);});
     ui.editDg=null;ui.dgFocus="eg-"+id;
   }else{
+    if(gr)dg.items=dg.items.filter(function(a){return !libre(a);});
     dg.items.push({id:uid("g"),sede:sede,grupo:gr,docente:doc,jornada:val("jornada")});
     f.reset();ui.dgFocus="nd-grupo";
     dgAviso(gr?"Grupo "+gr+" agregado con "+doc+".":doc+" agregado sin dirección de grupo.","ok");
