@@ -32,7 +32,7 @@
   /* forma */
   --r:4px; --r-sm:3px; --r-xs:2px; --r-pill:999px; --r-round:50%; --bw:1px;
   /* elevación: planas; solo lo que flota (pestañas fijas, confirmaciones) lleva sombra */
-  --sh-1:0 1px 0 rgba(28,36,25,.04); --sh-pop:0 10px 28px -10px rgba(28,36,25,.35),0 2px 6px rgba(28,36,25,.08);
+  --sh-pop:0 10px 28px -10px rgba(23,32,42,.35),0 2px 6px rgba(23,32,42,.08);
   --veil:rgba(255,255,255,.14); --press:rgba(28,36,25,.06);
   /* movimiento */
   --dur-1:120ms; --dur-2:160ms; --dur-3:200ms; --ease:cubic-bezier(.23,1,.32,1); --press-scale:.97;
@@ -186,6 +186,8 @@ td.num,th.num{text-align:right}
 .stat span{font-size:var(--fs-sm);font-weight:600;color:var(--ink-2);line-height:1.3}
 .stat.cont b{color:var(--cont)} .stat.in b{color:var(--in)} .stat.out b{color:var(--out)} .stat.warn b{color:var(--accent)}
 .stat.warn{background:var(--oro-soft)}
+/* Los nombres de los pendientes ya salen completos en «Pendientes de asignación», justo debajo: en la franja basta la cifra */
+#resumen .stat small{display:none}
 .stat small{font-size:var(--fs-xs);line-height:1.35;color:var(--ink-2);overflow-wrap:anywhere}
 
 /* ===== 5. Pantallas (primera pasada; se afinan en la etapa 2) ===== */

@@ -955,7 +955,7 @@ function renderPendientes(){
       return '<button class="pend-item" data-act="irProj" data-pid="'+esc(p.id)+'" id="pi-'+esc(p.id)+'" title="Ir al proyecto en el tablero">'+esc(p.nombre||"(Proyecto sin nombre)")+'</button>';
     }).join("")+'</div>':'<p class="pend-ok">Todos los proyectos tienen integrantes en '+esc(anio)+'.</p>';
   var h2=sinP.length?'<div class="chips">'+sinP.map(function(d){
-      return '<button class="pend-item" data-act="irDoc" data-did="'+esc(d.id)+'" id="pd-'+esc(d.id)+'" title="Ver en ¿Dónde estoy?">'+esc(d.nombre)+'</button>';
+      return '<button class="pend-item" data-act="irDoc" data-did="'+esc(d.id)+'" id="pd-'+esc(d.id)+'" title="Ver en Proyectos por docente">'+esc(d.nombre)+'</button>';
     }).join("")+'</div>':'<p class="pend-ok">Los '+state.docentes.length+' docentes de la lista tienen al menos un proyecto en '+esc(anio)+'.</p>';
   if(ext.length)h2+='<p class="pend-sub">En direcciones de grupo o cargas, sin ningún proyecto</p><div class="chips">'+ext.map(function(n){return '<span class="pend-item ext">'+esc(n)+'</span>';}).join("")+'</div>';
   body.innerHTML=card(vacios.length,"Proyectos sin integrantes en "+esc(anio),h1)+card(nDoc,"Docentes sin proyecto en "+esc(anio),h2);
