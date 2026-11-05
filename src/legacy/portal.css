@@ -89,8 +89,11 @@ section{display:flex;flex-direction:column;gap:var(--s-4);min-width:0}
 .sec-head{display:flex;flex-wrap:wrap;gap:var(--s-1) var(--s-5);align-items:baseline;justify-content:space-between}
 .sec-head > .muted{font-size:var(--fs-sm)}
 .nav{display:flex;flex-wrap:wrap;gap:var(--s-1) var(--s-4);padding-bottom:var(--s-2);border-bottom:1px solid var(--line-strong)}
-.nav a{color:var(--azul-ink);text-decoration:none;font-weight:600;font-size:var(--fs-sm);padding:var(--s-1) 0}
+.nav a{color:var(--azul-ink);text-decoration:none;font-weight:600;font-size:var(--fs-sm);padding:var(--s-2) 0;min-height:24px}
 .legend{display:flex;flex-wrap:wrap;gap:var(--s-2);font-size:var(--fs-sm)}
+.legend-tag{padding-right:14px}
+.stack{display:flex;flex-direction:column;gap:var(--s-4)}
+.dg-confirm p{margin:0}
 
 /* ===== 4. Componentes ===== */
 /* Botones */

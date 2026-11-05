@@ -48,9 +48,9 @@
     <div class="sec-head">
       <h2>Tablero por proyecto</h2>
       <div class="legend" aria-label="Convenciones">
-        <span class="chip cont"><span class="chip-main" style="padding-right:14px"><span class="tag">Continúa</span></span></span>
-        <span class="chip in"><span class="chip-main" style="padding-right:14px"><span class="tag">+ Ingresa</span></span></span>
-        <span class="chip out"><span class="chip-main" style="padding-right:14px"><span class="tag">Sale</span></span></span>
+        <span class="chip cont"><span class="chip-main legend-tag"><span class="tag">Continúa</span></span></span>
+        <span class="chip in"><span class="chip-main legend-tag"><span class="tag">+ Ingresa</span></span></span>
+        <span class="chip out"><span class="chip-main legend-tag"><span class="tag">Sale</span></span></span>
       </div>
     </div>
     <div class="dg-tools">
@@ -76,7 +76,7 @@
 
   <section id="tablas">
     <div class="sec-head"><h2>Tablas para Word</h2><span class="muted">Lo mismo que queda en el documento descargado.</span></div>
-    <div id="tablas-body" style="display:flex;flex-direction:column;gap:18px"></div>
+    <div id="tablas-body" class="stack"></div>
   </section>
 
   <section id="gestion">
@@ -114,7 +114,7 @@
       </div>
       <div class="panel dg-confirm" id="dg-anio-confirm" role="alertdialog" aria-labelledby="dg-anio-confirm-t" aria-describedby="dg-anio-confirm-d" hidden>
         <h3 id="dg-anio-confirm-t">¿Cambiar el año de las direcciones de grupo?</h3>
-        <p id="dg-anio-confirm-d" style="margin:0"></p>
+        <p id="dg-anio-confirm-d"></p>
         <div class="row"><button class="btn primary" type="button" id="dg-anio-ok" data-act="dgAnioOk">Confirmar</button><button class="btn" type="button" id="dg-anio-no" data-act="dgAnioNo">Cancelar</button></div>
       </div>
       <div class="msg dg-aviso" id="dg-aviso" role="status" aria-live="polite" hidden></div>
