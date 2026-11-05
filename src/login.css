@@ -1,6 +1,6 @@
 /* Pantallas previas al portal (acceso, no autorizado, carga).
-   Mismo lenguaje que el portal: papel crema, tarjeta blanca plana con filete verde, títulos en Source Serif 4, cabecera verde con
-   filete dorado. Los tokens --g-* son alias de los tokens de portal.css (única fuente de verdad); esta pantalla no depende de data-tema. */
+   Mismo lenguaje que el portal: lienzo gris frío, tarjeta blanca plana con el filete tricolor del escudo, títulos en Source Serif 4,
+   franja verde con el mismo filete. Los tokens --g-* son alias de los tokens de portal.css (única fuente de verdad); esta pantalla no depende de data-tema. */
 .gate-page{
   --g-paper:var(--bg); --g-card:var(--surface); --g-ink:var(--ink); --g-ink-2:var(--ink-2); --g-muted:var(--muted);
   --g-line:var(--line-strong); --g-verde:var(--verde); --g-verde-2:var(--verde-hondo); --g-azul:var(--azul);
