@@ -384,4 +384,75 @@ table.mx{min-width:1180px}
   .ca-row:hover,.poa-row:hover{background:var(--sunk)}
   input[type=text]:hover,input[type=date]:hover,input[type=number]:hover,select:hover{border-color:var(--muted)}
 }
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* ===== 8. Pulido ===== */
+/* Datos extremos (break-ui): nombres y códigos largos se parten en vez de desbordar */
+.person,.pend-item,.chip-main .nm,.ca-asig,.week-head h4,.month-head h3,.dg-nombre,.act-name,.poa-act,.stat small,.proj-head h3,.panel > h3,.card h3,.ca-card h3{overflow-wrap:anywhere;min-width:0}
+.person{max-width:100%;text-align:left}
+.dg-grupo{overflow-wrap:anywhere;font-size:var(--fs-lg);line-height:1.1;padding-inline:var(--s-1);min-width:0}
+.mxl{overflow-wrap:break-word;hyphens:auto}
+.top h1,.brand-txt{overflow-wrap:anywhere}
+.status{max-width:100%}
+.tabs{scroll-snap-type:x proximity}
+.tab{scroll-snap-align:start}
+/* Foco visible donde el contenedor recorta el contorno */
+.tab:focus-visible,.chip-main:focus-visible,.chip-x:focus-visible,tr[data-act="editPer"]:focus-visible,.mxl:focus-visible,.ca-row:focus-visible{outline-offset:-3px}
+.top .btn:focus-visible,.segb:focus-visible,.mesb:focus-visible{outline-offset:1px}
+tr[data-act="editPer"]:focus-visible td{background:var(--azul-soft)}
+/* Matriz de cargas: caja propia con scroll en ambos ejes; cabecera, primera columna y pie quedan fijos */
+.tbl-wrap:has(table.mx){max-height:calc(100vh - 160px);max-height:calc(100dvh - 160px);overflow:auto;overscroll-behavior:contain}
+.mx thead th{position:sticky;top:0;z-index:2}
+.mx thead th:first-child{z-index:3}
+.mx tfoot td,.mx tfoot th{position:sticky;bottom:0;z-index:2}
+.mx tfoot th{z-index:3}
+/* Zonas seguras (muesca en horizontal) */
+.top-in,.wrap{padding-left:max(var(--gutter),env(safe-area-inset-left,0px));padding-right:max(var(--gutter),env(safe-area-inset-right,0px))}
+
+/* Movimiento: solo opacidad y transform, 120-200 ms, nada que se repita con datos en vivo (los renders del tiempo real
+   reemplazan nodos sin animar). Cambiar de pestaña y abrir la confirmación son eventos ocasionales. */
+.segb,.mesb,.person,.pend-item,.gchip,.chip-main,.chip-x{transition:background-color var(--dur-1) ease,border-color var(--dur-1) ease,color var(--dur-1) ease,transform var(--dur-1) var(--ease)}
+.segb:active,.mesb:active:not(:disabled),.person:active,.pend-item:not(.ext):active,.gchip:active{transform:scale(.97)}
+@keyframes view-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@keyframes pop-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .view:not([hidden]){animation:view-in var(--dur-3) var(--ease)}
+  #dg-anio-confirm:not([hidden]){animation:pop-in var(--dur-2) var(--ease)}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* Táctil: objetivos de 44 px, campos a 16 px (evita el zoom de iOS), sin hover pegado */
+@media (pointer:coarse){
+  .btn,.segb,.mesb,.person,.pend-item,.gchip,.chip-main,.nav a,details.panel summary,input[type=text],input[type=date],input[type=number],select{min-height:var(--tap)}
+  .btn.small{padding-block:8px}
+  .chip-x{min-width:var(--tap)}
+  .ca-row,.mxl{min-height:var(--tap);display:grid;align-content:center}
+  .mxl{display:flex;align-items:center;justify-content:center}
+  details.panel summary{display:flex;align-items:center}
+  input[type=text],input[type=date],input[type=number],select,textarea{font-size:1rem}
+  .tab{min-height:52px}
+  .nav{gap:0 var(--s-4)}
+}
+/* Teléfono */
+@media (max-width:560px){
+  :root{--gutter:16px}
+  .top .eyebrow{display:none}
+  .top-in{gap:var(--s-2) var(--s-4)}
+  .top-actions{width:100%}
+  .top-actions .btn{flex:1 1 auto}
+  .status{flex:1 1 100%;justify-content:center;margin:0}
+  .stat{padding:var(--s-3) var(--s-4)}
+  .stat b{font-size:var(--fs-xl)}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:last-child:nth-child(odd){grid-column:1 / -1}
+  .mx th[scope=row]{min-width:112px}
+  .mx .mxc{min-width:88px}
+  .card,.empty{padding:var(--s-4)}
+  .lanes{padding:var(--s-3)}
+  .proj-head{padding:var(--s-3)}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .dg-tools .field,.dg-tools .field.anio,.new-proj{flex:1 1 100%;max-width:none}
+  .seg{max-width:100%}
+  .act,.act.editing{padding:var(--s-3)}
+  .week-head,.poa-row,.poa-edit{padding-inline:var(--s-3)}
+  #dg-list{grid-template-columns:minmax(0,1fr)}
+}
