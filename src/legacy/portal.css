@@ -1,4 +1,6 @@
 /* Layout: consola administrativa. Barra institucional arriba, pestañas, indicadores en una sola franja y una tarjeta por proyecto con dos columnas (año actual → año próximo). */
+/* El atributo hidden debe ganar a display:flex de .view; el host de Artifact ya no lo inyecta. */
+[hidden]{display:none!important}
 :root{
   /* Tema oscuro por defecto (proyector); data-tema="claro" activa el claro. Neutros grafito con leve sesgo azul. */
   --bg:#0d1115; --surface:#141a20; --raised:#1a2128; --sunk:#10151a; --seg-on:#263039;
