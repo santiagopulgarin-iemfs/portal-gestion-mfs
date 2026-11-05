@@ -9,12 +9,13 @@
 /* ===== 1. Tokens ===== */
 :root{
   /* superficie y texto */
-  --bg:#f3f1ea; --surface:#ffffff; --raised:#ffffff; --sunk:#f8f6f0; --sunk-2:#ebe8dd;
-  --ink:#1c2419; --ink-2:#38423a; --muted:#566052;
-  --line:#e1ddd0; --line-strong:#c5c0ae; --field-line:#857f6a;
-  /* identidad (escudo): verde = marca y acción; azul = información y foco; oro = filete y "hoy" */
+  /* neutros fríos (matiz del azul del escudo, croma mínimo): el blanco de las tarjetas se separa del lienzo sin sombras */
+  --bg:#f0f3f6; --surface:#ffffff; --raised:#ffffff; --sunk:#f6f8fa; --sunk-2:#e5e9ee;
+  --ink:#17202a; --ink-2:#344050; --muted:#4d5967;
+  --line:#dbe0e6; --line-strong:#bfc7d1; --field-line:#76828f;
+  /* identidad (escudo) con roles distintos: verde = marca y ACCIÓN (cabecera, botones primarios); azul = SELECCIÓN, navegación, foco e información; oro = filete, pendiente y "hoy" */
   --verde:#395723; --verde-hondo:#263c17; --verde-soft:#e8efe1; --on-verde:#ffffff; --on-verde-2:#d3dfc9; --verde-line:#6a8756; --verde-glass:#314d20;
-  --azul:#2a6aa6; --azul-ink:#1f5a99; --azul-soft:#e8f1fa;
+  --azul:#2a6aa6; --azul-ink:#1f5a99; --azul-soft:#e8f1fa; --on-azul:#ffffff; --on-azul-2:#d6e5f5;
   --oro:#d9a441; --oro-ink:#7a4d00; --oro-soft:#fbf1dc; --oro-line:#e2c57e;
   /* significado: continúa / ingresa / sale / atención */
   --cont:#1f5a99; --cont-bg:#eaf2fb; --in:#23733f; --in-bg:#e8f5ec; --out:#a8321f; --out-bg:#fcedea;
@@ -79,11 +80,11 @@ section{display:flex;flex-direction:column;gap:var(--s-3);min-width:0}
 .tabs::-webkit-scrollbar{display:none}
 .tab{position:relative;flex:none;border:0;background:transparent;padding:0 14px;min-height:48px;margin-bottom:-1px;font-family:var(--body);font-weight:600;font-size:var(--fs-md);color:var(--muted);display:inline-flex;gap:var(--s-2);align-items:center;white-space:nowrap;transition:color var(--dur-1) ease,transform var(--dur-1) var(--ease)}
 /* indicador de la pestaña activa: barra que se escala (transform + opacity), no un borde que cambia de color */
-.tab::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--verde);transform:scaleX(.4);opacity:0;transition:transform var(--dur-2) var(--ease),opacity var(--dur-2) var(--ease)}
-.tab[aria-selected="true"]{color:var(--verde);font-weight:700}
+.tab::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--azul-ink);transform:scaleX(.4);opacity:0;transition:transform var(--dur-2) var(--ease),opacity var(--dur-2) var(--ease)}
+.tab[aria-selected="true"]{color:var(--azul-ink);font-weight:700}
 .tab[aria-selected="true"]::after{transform:none;opacity:1}
 .tab .n{font-size:var(--fs-xs);font-weight:600;padding:1px 7px;border-radius:var(--r-pill);background:var(--sunk-2);color:var(--ink-2)}
-.tab[aria-selected="true"] .n{background:var(--verde-soft);color:var(--verde)}
+.tab[aria-selected="true"] .n{background:var(--azul-soft);color:var(--azul-ink)}
 .tab .n:empty{display:none}
 .wrap{max-width:var(--wrap-max);margin:0 auto;padding-inline:var(--gutter);padding-block:var(--s-4) calc(var(--s-7) + 56px);display:flex;flex-direction:column;gap:var(--s-4);min-width:0}
 .view{display:flex;flex-direction:column;gap:var(--s-6);min-width:0}
@@ -145,7 +146,7 @@ input:disabled,select:disabled{background:var(--sunk);color:var(--muted)}
 /* Segmentado */
 .seg{display:inline-flex;flex-wrap:wrap;gap:2px;padding:3px;border:1px solid var(--line-strong);border-radius:var(--r);background:var(--sunk-2)}
 .segb{border:0;background:transparent;padding:5px 12px;font-weight:600;font-size:var(--fs-sm);color:var(--ink-2);border-radius:var(--r-sm);transition:background-color var(--dur-1) ease,color var(--dur-1) ease}
-.segb[aria-pressed="true"]{background:var(--surface);color:var(--verde);box-shadow:0 1px 2px var(--press),0 0 0 1px var(--line-strong)}
+.segb[aria-pressed="true"]{background:var(--surface);color:var(--azul-ink);box-shadow:0 1px 2px var(--press),0 0 0 1px var(--line-strong)}
 
 /* Paneles, tarjetas, vacíos */
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:var(--s-4) var(--s-4);display:flex;flex-direction:column;gap:var(--s-3);min-width:0}
@@ -222,9 +223,9 @@ td.num,th.num{text-align:right}
 .who{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:var(--s-4)}
 .people{display:flex;flex-wrap:wrap;gap:6px;align-content:flex-start}
 .person{border:1px solid var(--line-strong);background:var(--surface);border-radius:var(--r-sm);padding:5px 10px;font-weight:500;font-size:var(--fs-sm);display:inline-flex;gap:var(--s-2);align-items:center}
-.person[aria-pressed="true"]{background:var(--verde);color:var(--on-verde);border-color:var(--verde)}
+.person[aria-pressed="true"]{background:var(--azul-ink);color:var(--on-azul);border-color:var(--azul-ink)}
 .person .n{font-size:var(--fs-xs);padding:0 5px;border-radius:var(--r-xs);background:var(--sunk-2);color:var(--ink-2)}
-.person[aria-pressed="true"] .n{background:var(--veil);color:var(--on-verde)}
+.person[aria-pressed="true"] .n{background:var(--veil);color:var(--on-azul)}
 .person.none{border-color:var(--oro);border-width:1px 1px 1px 4px}
 .card dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--s-4);margin:0}
 .card dt{font-size:var(--fs-xs);color:var(--ink-2);font-weight:700;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid var(--line)}
@@ -313,8 +314,8 @@ table.mx{min-width:1180px}
 .mes-bar{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:var(--s-1);padding:var(--s-1);background:var(--sunk-2);border:1px solid var(--line-strong);border-radius:var(--r)}
 .mesb{border:0;background:transparent;border-radius:var(--r-sm);padding:6px 4px;display:flex;flex-direction:column;align-items:center;gap:1px;color:var(--ink-2);font-weight:600;font-size:var(--fs-sm)}
 .mesb .c{font-size:var(--fs-xs);font-weight:500;color:var(--muted)}
-.mesb[aria-pressed="true"]{background:var(--verde);color:var(--on-verde)}
-.mesb[aria-pressed="true"] .c{color:var(--on-verde-2)}
+.mesb[aria-pressed="true"]{background:var(--azul-ink);color:var(--on-azul)}
+.mesb[aria-pressed="true"] .c{color:var(--on-azul-2)}
 .mesb.hoy:not([aria-pressed="true"]){box-shadow:inset 0 -3px 0 var(--oro)}
 .mesb:disabled{opacity:.4;cursor:default}
 .poa-form{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:10px 14px;align-items:end}
