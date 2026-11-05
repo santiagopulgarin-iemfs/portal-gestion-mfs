@@ -1,11 +1,11 @@
 /* Pantallas previas al portal (acceso, no autorizado, carga).
-   Mismo lenguaje que el portal: lienzo gris frío, tarjeta blanca plana con el filete tricolor del escudo, títulos en Source Serif 4,
-   franja verde con el mismo filete. Los tokens --g-* son alias de los tokens de portal.css (única fuente de verdad); esta pantalla no depende de data-tema. */
+   Mismo lenguaje que el portal: lienzo gris frío, tarjeta blanca plana con borde de 1px, una sola familia (Roboto),
+   franja verde lisa. Los tokens --g-* son alias de los tokens de portal.css (única fuente de verdad); esta pantalla no depende de data-tema. */
 .gate-page{
   --g-paper:var(--bg); --g-card:var(--surface); --g-ink:var(--ink); --g-ink-2:var(--ink-2); --g-muted:var(--muted);
   --g-line:var(--line-strong); --g-verde:var(--verde); --g-verde-2:var(--verde-hondo); --g-azul:var(--azul);
-  --g-oro:var(--oro); --g-oro-ink:var(--oro-ink); --g-err:var(--out); --g-err-bg:var(--out-bg);
-  --g-display:var(--display); --g-body:var(--body);
+  --g-err:var(--out); --g-err-bg:var(--out-bg);
+  --g-body:var(--font);
   position:relative;isolation:isolate;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;
   background:var(--g-paper);color:var(--g-ink);font-family:var(--g-body);font-size:1rem;line-height:1.55;
   color-scheme:light;-webkit-font-smoothing:antialiased;
@@ -13,9 +13,8 @@
 body:has(.gate-page){margin:0;background:var(--bg)}
 .gate-page *,.gate-page *::before,.gate-page *::after{box-sizing:border-box}
 
-/* Franja superior: verde hondo con filete dorado, igual que la cabecera del portal. */
-.gate-band{position:relative;height:16px;background:var(--verde-hondo)}
-.gate-band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--verde) 0 34%,var(--azul) 34% 67%,var(--oro) 67% 100%)}
+/* Franja superior: verde liso, igual que la cabecera del portal. */
+.gate-band{position:relative;height:16px;background:var(--verde)}
 
 .gate-main{
   flex:1;width:100%;max-width:1080px;margin:0 auto;display:grid;align-items:center;
@@ -26,25 +25,21 @@ body:has(.gate-page){margin:0;background:var(--bg)}
 
 /* Identidad */
 .gate-id{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--s-2) 0}
-.gate-rings{position:absolute;z-index:-1;top:50%;left:50%;width:min(420px,92%);height:auto;transform:translate(-50%,-50%);color:var(--verde);opacity:.14;pointer-events:none}
 .gate-crest{display:block;margin-bottom:var(--s-5)}
 .gate-crest img{display:block;max-width:100%}
-.gate-inst{margin:0;font-size:var(--fs-sm);letter-spacing:.1em;text-transform:uppercase;color:var(--g-muted);font-weight:600;display:flex;flex-direction:column;gap:var(--s-1)}
-.gate-inst strong{font-family:var(--g-display);font-size:clamp(1.7rem,3.4vw,2.4rem);letter-spacing:-.01em;text-transform:none;color:var(--g-verde);font-weight:700;line-height:1.1}
-.gate-place{margin:var(--s-3) 0 0;display:inline-flex;align-items:center;gap:10px;font-size:var(--fs-md);font-weight:600;color:var(--g-ink-2)}
-.gate-place::before,.gate-place::after{content:"";width:22px;height:2px;background:var(--g-oro)}
+.gate-inst{margin:0;font-size:var(--fs-md);color:var(--g-muted);font-weight:500;display:flex;flex-direction:column;gap:var(--s-1)}
+.gate-inst strong{font-size:clamp(1.5rem,3vw,2rem);color:var(--g-verde);font-weight:500;line-height:1.15}
+.gate-place{margin:var(--s-3) 0 0;font-size:var(--fs-md);font-weight:400;color:var(--g-ink-2)}
 
 /* Tarjeta de acción */
 .gate-card{
   position:relative;background:var(--g-card);border:1px solid var(--g-line);border-radius:var(--r);
   padding:clamp(28px,4vw,44px) clamp(20px,4vw,40px) clamp(24px,4vw,40px);
-  box-shadow:var(--sh-pop);display:flex;flex-direction:column;align-items:stretch;gap:0;overflow:hidden;
+  display:flex;flex-direction:column;align-items:stretch;gap:0;overflow:hidden;
 }
-/* Mismo filete tricolor del escudo que lleva la cabecera del portal */
-.gate-card::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--verde) 0 34%,var(--azul) 34% 67%,var(--oro) 67% 100%)}
-.gate-title{margin:0;font-family:var(--g-display);font-weight:700;font-size:clamp(1.7rem,4vw,2.2rem);line-height:1.1;letter-spacing:-.01em;color:var(--g-ink);text-wrap:balance}
+.gate-title{margin:0;font-weight:500;font-size:clamp(1.5rem,3.4vw,1.875rem);line-height:1.15;color:var(--g-ink);text-wrap:balance}
 .gate-lead{margin:var(--s-4) 0 0;color:var(--g-ink-2);text-wrap:pretty}
-.gate-lead code{font-family:var(--g-body);font-weight:600;font-size:.85em;background:var(--sunk-2);padding:1px 5px;border-radius:var(--r-xs)}
+.gate-lead code{font-family:var(--g-body);font-weight:500;font-size:.85em;background:var(--sunk-2);padding:1px 5px;border-radius:var(--r-xs)}
 .gate-email{overflow-wrap:anywhere;color:var(--g-ink)}
 .gate-card > .g-btn,.gate-card > .gate-btn{margin-top:var(--s-5)}
 .gate-note{margin:var(--s-4) 0 0;padding-top:var(--s-4);border-top:1px solid var(--line);font-size:var(--fs-sm);color:var(--g-muted);text-wrap:pretty}
@@ -57,7 +52,7 @@ body:has(.gate-page){margin:0;background:var(--bg)}
 .g-btn{
   display:inline-flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:48px;padding:0 var(--s-4);
   background:#fff;color:#1f1f1f;border:1px solid #747775;border-radius:var(--r);
-  font:600 var(--fs-md)/1 var(--g-body);cursor:pointer;transition:background-color var(--dur-1) ease,border-color var(--dur-1) ease,transform var(--dur-1) var(--ease);
+  font:500 var(--fs-md)/1 var(--g-body);cursor:pointer;transition:background-color var(--dur-1) ease,border-color var(--dur-1) ease,transform var(--dur-1) var(--ease);
 }
 .g-btn:active:not(:disabled){background:#e8eefb;transform:scale(.99)}
 .g-btn:disabled{cursor:progress;opacity:.75}
@@ -65,7 +60,7 @@ body:has(.gate-page){margin:0;background:var(--bg)}
 
 .gate-btn{
   display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 var(--s-5);border-radius:var(--r-sm);
-  background:var(--g-verde);color:var(--on-verde);border:1px solid var(--g-verde);font:700 var(--fs-md)/1 var(--g-body);cursor:pointer;
+  background:var(--g-verde);color:var(--on-verde);border:1px solid var(--g-verde);font:500 var(--fs-md)/1 var(--g-body);cursor:pointer;
   transition:background-color var(--dur-1) ease,transform var(--dur-1) var(--ease);
 }
 .gate-btn:active{transform:scale(.98)}
@@ -100,4 +95,4 @@ body:has(.gate-page){margin:0;background:var(--bg)}
   .gate-card{padding-top:30px}
 }
 @media (pointer:coarse){.g-btn,.gate-btn{min-height:var(--tap)}}
-@media (max-width:380px){.gate-inst strong{font-size:1.45rem}.gate-main{padding-inline:12px}}
+@media (max-width:380px){.gate-inst strong{font-size:1.375rem}.gate-main{padding-inline:12px}}
