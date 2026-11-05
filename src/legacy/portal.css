@@ -117,6 +117,8 @@ input[type=text],input[type=date],input[type=number],select,textarea{border:1px 
 input::placeholder{color:var(--muted);opacity:.8}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul);box-shadow:0 0 0 3px var(--azul-soft)}
 input:disabled,select:disabled{background:var(--sunk);color:var(--muted)}
+/* Error de campo: solo después de que la persona interactuó (:user-invalid), con borde y texto de ayuda nativo del navegador */
+input:user-invalid,select:user-invalid,textarea:user-invalid{border-color:var(--out);box-shadow:0 0 0 3px var(--out-bg)}
 
 /* Avisos y mensajes */
 /* Avisos: caja con filete fino y fondo tintado (sin franjas laterales gruesas) */
@@ -470,6 +472,15 @@ details.panel[open] > :not(summary){animation:fade-in var(--dur-2) ease-out}
   .tab::after{transform:none}
   details.panel summary::before{transition:none}
   #dg-anio-confirm:not([hidden]),#dg-aviso:not([hidden]){animation-name:fade-in}
+}
+
+/* Contraste forzado de Windows: el estado seleccionado no puede depender de colores de fondo, que el sistema descarta */
+@media (forced-colors:active){
+  .tab[aria-selected="true"]{border-bottom:3px solid Highlight}
+  .segb[aria-pressed="true"],.mesb[aria-pressed="true"],.person[aria-pressed="true"]{outline:2px solid Highlight;outline-offset:-2px}
+  .btn.primary,.session-bar button{border:2px solid ButtonText}
+  .chip.me{outline:2px solid Highlight}
+  .meter-bar{border:1px solid CanvasText}
 }
 
 /* Táctil: objetivos de 44 px, campos a 16 px (evita el zoom de iOS), sin hover pegado */
