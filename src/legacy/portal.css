@@ -34,7 +34,7 @@
   --sh-1:0 1px 0 rgba(28,36,25,.04); --sh-pop:0 10px 28px -10px rgba(28,36,25,.35),0 2px 6px rgba(28,36,25,.08);
   --veil:rgba(255,255,255,.14); --press:rgba(28,36,25,.06);
   /* movimiento */
-  --dur-1:120ms; --dur-2:160ms; --dur-3:200ms; --ease:cubic-bezier(.23,1,.32,1);
+  --dur-1:120ms; --dur-2:160ms; --dur-3:200ms; --ease:cubic-bezier(.23,1,.32,1); --press-scale:.97;
   --wrap-max:1480px; --gutter:clamp(16px,3vw,40px); --tap:44px;
   color-scheme:light;
 }
@@ -65,7 +65,7 @@ section{display:flex;flex-direction:column;gap:var(--s-4);min-width:0}
 .logo{flex:none;width:48px;height:48px;object-fit:cover;border-radius:var(--r-round);background:var(--surface);border:2px solid var(--oro-line)}
 .top-actions{display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center}
 .status{font-size:var(--fs-sm);font-weight:500;color:var(--on-verde-2);display:inline-flex;align-items:center;gap:var(--s-2);padding:5px var(--s-3);border:1px solid var(--verde-line);border-radius:var(--r-pill);background:var(--verde-glass);margin-right:var(--s-1)}
-.status::before{content:"";width:8px;height:8px;border-radius:var(--r-round);background:var(--dot-wait)}
+.status::before{content:"";width:8px;height:8px;border-radius:var(--r-round);background:var(--dot-wait);transition:background-color var(--dur-3) ease}
 .status[data-s="ok"]::before{background:var(--dot-ok)}
 .status[data-s="saving"]::before{background:var(--dot-saving)}
 .status[data-s="local"]::before{background:var(--dot-local)}
@@ -76,8 +76,11 @@ section{display:flex;flex-direction:column;gap:var(--s-4);min-width:0}
 .tabbar{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line-strong);padding-top:env(safe-area-inset-top,0px)}
 .tabs{max-width:var(--wrap-max);margin:0 auto;padding-inline:max(calc(var(--gutter) - 14px),0px);display:flex;gap:var(--s-1);overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:none;border:0;border-bottom:3px solid transparent;background:transparent;padding:0 14px;min-height:48px;margin-bottom:-1px;font-family:var(--body);font-weight:600;font-size:var(--fs-md);color:var(--muted);display:inline-flex;gap:var(--s-2);align-items:center;white-space:nowrap;transition:color var(--dur-1) ease,border-color var(--dur-1) ease}
-.tab[aria-selected="true"]{color:var(--verde);border-bottom-color:var(--verde);font-weight:700}
+.tab{position:relative;flex:none;border:0;background:transparent;padding:0 14px;min-height:48px;margin-bottom:-1px;font-family:var(--body);font-weight:600;font-size:var(--fs-md);color:var(--muted);display:inline-flex;gap:var(--s-2);align-items:center;white-space:nowrap;transition:color var(--dur-1) ease,transform var(--dur-1) var(--ease)}
+/* indicador de la pestaña activa: barra que se escala (transform + opacity), no un borde que cambia de color */
+.tab::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--verde);transform:scaleX(.4);opacity:0;transition:transform var(--dur-2) var(--ease),opacity var(--dur-2) var(--ease)}
+.tab[aria-selected="true"]{color:var(--verde);font-weight:700}
+.tab[aria-selected="true"]::after{transform:none;opacity:1}
 .tab .n{font-size:var(--fs-xs);font-weight:600;padding:1px 7px;border-radius:var(--r-pill);background:var(--sunk-2);color:var(--ink-2)}
 .tab[aria-selected="true"] .n{background:var(--verde-soft);color:var(--verde)}
 .tab .n:empty{display:none}
@@ -92,7 +95,7 @@ section{display:flex;flex-direction:column;gap:var(--s-4);min-width:0}
 /* ===== 4. Componentes ===== */
 /* Botones */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);border-radius:var(--r-sm);padding:7px 14px;font-size:var(--fs-sm);font-weight:600;line-height:1.3;transition:background-color var(--dur-1) ease,border-color var(--dur-1) ease,transform var(--dur-1) var(--ease)}
-.btn:active{transform:scale(.98)}
+.btn:active:not(:disabled){transform:scale(var(--press-scale))}
 .btn.primary{background:var(--verde);border-color:var(--verde);color:var(--on-verde)}
 .btn.small{padding:4px 10px;font-size:var(--fs-xs)}
 .btn.danger{color:var(--out)}
@@ -410,15 +413,27 @@ tr[data-act="editPer"]:focus-visible td{background:var(--azul-soft)}
 
 /* Movimiento: solo opacidad y transform, 120-200 ms, nada que se repita con datos en vivo (los renders del tiempo real
    reemplazan nodos sin animar). Cambiar de pestaña y abrir la confirmación son eventos ocasionales. */
-.segb,.mesb,.person,.pend-item,.gchip,.chip-main,.chip-x{transition:background-color var(--dur-1) ease,border-color var(--dur-1) ease,color var(--dur-1) ease,transform var(--dur-1) var(--ease)}
-.segb:active,.mesb:active:not(:disabled),.person:active,.pend-item:not(.ext):active,.gchip:active{transform:scale(.97)}
-@keyframes view-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-@keyframes pop-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:no-preference){
-  .view:not([hidden]){animation:view-in var(--dur-3) var(--ease)}
-  #dg-anio-confirm:not([hidden]){animation:pop-in var(--dur-2) var(--ease)}
+.segb,.mesb,.person,.pend-item,.gchip,.chip-main,.chip-x,.ca-row,.mxl{transition:background-color var(--dur-1) ease,border-color var(--dur-1) ease,color var(--dur-1) ease,transform var(--dur-1) var(--ease)}
+/* Retroalimentación al presionar: todo lo que se pulsa responde en pointer-down (transform, 120 ms, ease-out fuerte) */
+.segb:active,.mesb:active:not(:disabled),.person:active,.pend-item:not(.ext):active,.gchip:active,.chip-main:active,.chip-x:active,.mxl:active,.tab:active,.session-bar button:active{transform:scale(var(--press-scale))}
+/* Entradas: solo opacidad (+ un desplazamiento mínimo en lo ocasional). Son transiciones/animaciones cortas y no bloquean la interacción. */
+@keyframes view-in{from{opacity:0}to{opacity:1}}
+@keyframes pop-in{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+/* Cambiar de pestaña es navegación frecuente: solo un fundido de 120 ms; con el teclado (foco en una pestaña) no se anima nada */
+.view:not([hidden]){animation:view-in var(--dur-1) ease-out}
+body:has(.tab:focus-visible) .view:not([hidden]){animation:none}
+/* Confirmación y aviso de Direcciones: ocasionales, nacen debajo de "Cambiar año" (origen arriba), salida inmediata */
+#dg-anio-confirm:not([hidden]),#dg-aviso:not([hidden]){animation:pop-in var(--dur-2) var(--ease);transform-origin:top left}
+/* Paneles plegables: el contenido aparece con un fundido al abrir (sin animar la altura, que es layout) */
+details.panel[open] > :not(summary){animation:fade-in var(--dur-2) ease-out}
+/* Movimiento reducido: menos, no cero. Se conservan fundidos y cambios de color; se quitan escalas y desplazamientos. */
+@media (prefers-reduced-motion:reduce){
+  :root{--press-scale:1}
+  html{scroll-behavior:auto}
+  .tab::after{transform:none}
+  #dg-anio-confirm:not([hidden]),#dg-aviso:not([hidden]){animation-name:fade-in}
 }
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 
 /* Táctil: objetivos de 44 px, campos a 16 px (evita el zoom de iOS), sin hover pegado */
 @media (pointer:coarse){
