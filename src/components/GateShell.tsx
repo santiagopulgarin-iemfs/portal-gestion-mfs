@@ -23,7 +23,7 @@ export function GateShell({ children, compact = false }: Props) {
               <ellipse cx="200" cy="260" rx="126" ry="166" />
             </g>
           </svg>
-          <Crest size={compact ? 112 : 176} className="gate-crest" />
+          <Crest size={compact ? 128 : 208} className="gate-crest" />
           <p className="gate-inst">
             Institución Educativa
             <strong>Marco Fidel Suárez</strong>

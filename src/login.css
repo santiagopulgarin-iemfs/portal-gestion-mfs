@@ -28,7 +28,7 @@ body:has(.gate-page){margin:0;background:var(--bg)}
 .gate-id{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:var(--s-2) 0}
 .gate-rings{position:absolute;z-index:-1;top:50%;left:50%;width:min(420px,92%);height:auto;transform:translate(-50%,-50%);color:var(--verde);opacity:.14;pointer-events:none}
 .gate-crest{display:block;margin-bottom:var(--s-5)}
-.gate-crest img{display:block}
+.gate-crest img{display:block;max-width:100%}
 .gate-inst{margin:0;font-size:var(--fs-sm);letter-spacing:.1em;text-transform:uppercase;color:var(--g-muted);font-weight:600;display:flex;flex-direction:column;gap:var(--s-1)}
 .gate-inst strong{font-family:var(--g-display);font-size:clamp(1.7rem,3.4vw,2.4rem);letter-spacing:-.01em;text-transform:none;color:var(--g-verde);font-weight:700;line-height:1.1}
 .gate-place{margin:var(--s-3) 0 0;display:inline-flex;align-items:center;gap:10px;font-size:var(--fs-md);font-weight:600;color:var(--g-ink-2)}
@@ -96,7 +96,7 @@ body:has(.gate-page){margin:0;background:var(--bg)}
 
 @media (max-width:859px){
   .gate-id{padding-bottom:0}
-  .gate-crest img{width:112px!important;height:112px!important}
+  .gate-crest img{width:auto!important;height:140px!important}
   .gate-card{padding-top:30px}
 }
 @media (pointer:coarse){.g-btn,.gate-btn{min-height:var(--tap)}}
