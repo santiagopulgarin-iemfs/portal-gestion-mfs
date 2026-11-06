@@ -1,5 +1,6 @@
 // @ts-nocheck
 /* Lógica original del Portal (artefacto v21), sin cambios salvo este envoltorio. Usa window.claude (ver src/lib/claudeShim.ts). */
+import { construirXlsx, hojaDeTabla, hojasCargas, hojasDirecciones } from "./xlsx.js";
 let started=false;
 export function initPortal(){
 if(started)return;started=true;
@@ -142,7 +143,7 @@ function conectar(){
   }).catch(function(){sinDb();});
 }
 
-/* ---------- Tablas (página, Word y portapapeles comparten esta fuente) ---------- */
+/* ---------- Tablas (página, Excel y portapapeles comparten esta fuente) ---------- */
 function tablas(sc){if(sc==="poa")return poaTablas();var t=todasTablas();return sc==="act"?[t[2]]:sc==="dg"?[t[3]]:sc==="ca"?[t[4]]:[t[0],t[1]];}
 function todasTablas(){
   var lista=function(ids){return ids.map(nombre).join(", ")||"—";};
@@ -164,55 +165,38 @@ function textoTablas(){
   return out.join("\n");
 }
 
-/* ---------- Word (.docx) ---------- */
-function x(s){return String(s).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
-function wp(text,o){
-  o=o||{};
-  return '<w:p><w:pPr><w:spacing w:before="'+(o.before||0)+'" w:after="'+(o.after==null?120:o.after)+'"/>'+(o.align?'<w:jc w:val="'+o.align+'"/>':'')+'</w:pPr>'+
-    '<w:r><w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri"/>'+(o.bold?'<w:b/>':'')+(o.color?'<w:color w:val="'+o.color+'"/>':'')+'<w:sz w:val="'+(o.size||22)+'"/><w:szCs w:val="'+(o.size||22)+'"/></w:rPr>'+
-    '<w:t xml:space="preserve">'+x(text)+'</w:t></w:r></w:p>';
+/* ---------- Excel (.xlsx) ---------- */
+/* Cada pestaña se exporta como libro con sus tablas como hojas (datos reales, no texto del DOM). */
+function hojasExcel(){
+  if(ui.tab==="ca")return hojasCargas(ca.items,ca.tope,cmp);
+  if(ui.tab==="dg")return hojasDirecciones(dgOrden(),dg.anio);
+  var t=tablas(ui.tab);
+  if(ui.tab==="poa"){
+    var mes=poaMesActual(),d=mes==="todo"?null:fechaObj(mes+"-01"),h=[
+      hojaDeTabla(t[0],("POA "+poa.anio+(d?" "+mayus(MESES[d.getMonth()]):"")).trim()),
+      hojaDeTabla(t[1],"Actividades periódicas")];
+    var hitos=poa.notas.filter(function(n){return mes==="todo"||n.mes===mes;});
+    if(hitos.length)h.push({name:"Hitos",cols:[{h:"Mes",w:14},{h:"Semana",w:22},{h:"Hito",w:70}],
+      rows:hitos.map(function(n){var m=fechaObj(n.mes+"-01");return [m?mayus(MESES[m.getMonth()])+" "+m.getFullYear():n.mes,n.semana?semanaPartes(n.semana).titulo:"",n.texto];})});
+    return h;
+  }
+  return t.map(function(x){return hojaDeTabla(x);});
 }
-function wtbl(t){
-  var total=t.anchos.reduce(function(a,b){return a+b;},0);
-  var b=function(n){return '<w:'+n+' w:val="single" w:sz="6" w:space="0" w:color="444444"/>';};
-  var cell=function(txt,w,head,right){
-    return '<w:tc><w:tcPr><w:tcW w:w="'+w+'" w:type="dxa"/>'+(head?'<w:shd w:val="clear" w:color="auto" w:fill="D9E2DC"/>':'')+'</w:tcPr>'+wp(txt,{bold:head,size:head?20:21,after:40,before:40,align:right?"right":null})+'</w:tc>';
-  };
-  var xml='<w:tbl><w:tblPr><w:tblW w:w="'+total+'" w:type="dxa"/><w:tblBorders>'+b("top")+b("left")+b("bottom")+b("right")+b("insideH")+b("insideV")+'</w:tblBorders><w:tblLayout w:type="fixed"/>'+
-    '<w:tblCellMar><w:left w:w="100" w:type="dxa"/><w:right w:w="100" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>'+
-    t.anchos.map(function(w){return '<w:gridCol w:w="'+w+'"/>';}).join("")+'</w:tblGrid>';
-  xml+='<w:tr><w:trPr><w:tblHeader/></w:trPr>'+t.cols.map(function(c,i){return cell(c,t.anchos[i],true,false);}).join("")+'</w:tr>';
-  var filas=t.filas.length?t.filas:[t.cols.map(function(_,i){return i===0?(t.vacio||"(Sin proyectos)"):"";})];
-  filas.forEach(function(f){xml+='<w:tr>'+f.map(function(c,i){return cell(c,t.anchos[i],false,!t.texto&&i===f.length-1);}).join("")+'</w:tr>';});
-  return xml+'</w:tbl>';
-}
-function docx(){
-  var fecha=new Date().toLocaleDateString("es-CO",{day:"numeric",month:"long",year:"numeric"});
-  var body=wp(state.institucion||"I.E. Marco Fidel Suárez",{bold:true,size:36,after:60})+
-    wp(ui.tab==="poa"?"Plan operativo anual":ui.tab==="ca"?"Cargas académicas":ui.tab==="dg"?("Direcciones de grupo "+dg.anio).trim():ui.tab==="act"?"Actividades institucionales":"Asignación de proyectos institucionales",{size:26,after:40})+
-    wp("Fecha: "+fecha,{size:20,color:"555555",after:240});
-  tablas(ui.tab).forEach(function(t){body+=wp(t.titulo,{bold:true,size:28,before:240,after:120})+wtbl(t)+wp("",{after:0});});
-  body+='<w:sectPr><w:pgSz w:w="15840" w:h="12240" w:orient="landscape"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="708" w:footer="708" w:gutter="0"/></w:sectPr>';
-  var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+body+'</w:body></w:document>';
-  var zip=new JSZip();
-  zip.file("[Content_Types].xml",'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>');
-  zip.file("_rels/.rels",'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>');
-  zip.file("word/document.xml",doc);
-  return zip.generateAsync({type:"blob",compression:"DEFLATE"});
-}
-function descargarWord(){
+function descargarExcel(){
   if(!downloads||!window.JSZip){
-    ui.msg="La descarga no está disponible en esta vista. Usá «Copiar tablas» y pegalas en Word: quedan como tabla.";
+    ui.msg="La descarga no está disponible en esta vista. Usá «Copiar tablas» y pegalas en Excel.";
     render();return;
   }
-  var nombreArchivo=ui.tab==="poa"?("POA "+poa.anio+(poaMesActual()==="todo"?"":" "+mayus(MESES[+poaMesActual().slice(5,7)-1]))).trim()+".docx":ui.tab==="ca"?"Cargas académicas.docx":ui.tab==="dg"?("Direcciones de grupo "+dg.anio).trim()+".docx":ui.tab==="act"?("Actividades "+aniosActs().replace(/ – /g,"-")).trim()+".docx":"Proyectos "+state.anioActual+" y "+state.anioProximo+".docx";
-  docx().then(function(blob){return downloads.save({filename:nombreArchivo,data:blob});}).then(function(){
-    ui.msg=ui.tab==="poa"?"Word del plan operativo descargado.":ui.tab==="ca"?"Word de cargas académicas descargado.":ui.tab==="dg"?"Word de direcciones de grupo descargado.":ui.tab==="act"?"Word de actividades descargado.":"Word de proyectos descargado.";render();
+  var nombreArchivo=ui.tab==="poa"?("POA "+poa.anio+(poaMesActual()==="todo"?"":" "+mayus(MESES[+poaMesActual().slice(5,7)-1]))).trim()+".xlsx":ui.tab==="ca"?"Cargas académicas.xlsx":ui.tab==="dg"?("Direcciones de grupo "+dg.anio).trim()+".xlsx":ui.tab==="act"?("Actividades "+aniosActs().replace(/ – /g,"-")).trim()+".xlsx":"Proyectos "+state.anioActual+" y "+state.anioProximo+".xlsx";
+  var libro;
+  try{libro=construirXlsx(hojasExcel(),window.JSZip);}catch(e){libro=Promise.reject(e);}
+  libro.then(function(blob){return downloads.save({filename:nombreArchivo,data:blob});}).then(function(){
+    ui.msg=ui.tab==="poa"?"Excel del plan operativo descargado.":ui.tab==="ca"?"Excel de cargas académicas descargado.":ui.tab==="dg"?"Excel de direcciones de grupo descargado.":ui.tab==="act"?"Excel de actividades descargado.":"Excel de proyectos descargado.";render();
   }).catch(function(e){
     var c=e&&e.code;
     if(c==="declined")ui.msg="Descarga cancelada.";
     else if(c==="rate_limited")ui.msg="Ya hay una descarga pendiente de confirmar. Esperá un momento y probá de nuevo.";
-    else ui.msg="No se pudo descargar el Word en esta vista. Usá «Copiar tablas» y pegalas en Word: quedan como tabla.";
+    else ui.msg="No se pudo descargar el Excel en esta vista. Usá «Copiar tablas» y pegalas en Excel.";
     render();
   });
 }
@@ -349,7 +333,7 @@ function setTab(t,save){
   /* tabindex itinerante (patrón WAI-ARIA tabs): solo la pestaña activa entra en el orden de Tab */
   [].forEach.call(document.querySelectorAll('.tabs [role="tab"]'),function(b){b.tabIndex=b.getAttribute("aria-selected")==="true"?0:-1;});
   $("btn-copiar").textContent=ui.tab==="poa"?"Copiar POA":ui.tab==="ca"?"Copiar cargas":ui.tab==="dg"?"Copiar direcciones":ui.tab==="act"?"Copiar actividades":"Copiar proyectos";
-  $("btn-word").textContent=ui.tab==="poa"?"Word del POA":ui.tab==="ca"?"Word de cargas":ui.tab==="dg"?"Word de direcciones":ui.tab==="act"?"Word de actividades":"Word de proyectos";
+  $("btn-word").textContent=ui.tab==="poa"?"Excel del POA":ui.tab==="ca"?"Excel de cargas":ui.tab==="dg"?"Excel de direcciones":ui.tab==="act"?"Excel de actividades":"Excel de proyectos";
   if(save){try{localStorage.setItem(TAB_LS,ui.tab);}catch(e){}}
 }
 /* ---------- Direcciones de grupo (doc aparte: tablero/direcciones) ---------- */
@@ -1122,7 +1106,7 @@ document.addEventListener("click",function(ev){
     case "dgAnioNo":dgAnioCerrar(true);return;
     case "dismiss":ui.msg=null;ui.copyText=null;render();return;
     case "keep":state.esEjemplo=false;commit();return;
-    case "word":descargarWord();return;
+    case "word":descargarExcel();return;
     case "copy":copiarTablas();return;
     case "copyYear":state.proyectos.forEach(function(q){q.proximo=q.actual.slice();});ui.confirm=null;commit();return;
     case "clearAll":var keep={institucion:state.esEjemplo?"":state.institucion,a:state.anioActual,b:state.anioProximo};state=vacio();state.institucion=keep.institucion;state.anioActual=keep.a;state.anioProximo=keep.b;ui.confirm=null;ui.sel=null;ui.adding=null;commit();return;
